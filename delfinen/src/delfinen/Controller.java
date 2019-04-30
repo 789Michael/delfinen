@@ -9,13 +9,6 @@ package delfinen;
  *
  * @author allan
  */
-public class Delfinen {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // ALLAN WAS HERE
-    }
+public class Controller {
     
 }

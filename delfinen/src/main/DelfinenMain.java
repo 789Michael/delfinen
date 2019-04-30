@@ -3,12 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package delfinen;
+package main;
 
 /**
  *
  * @author allan
  */
-public class klasse1 {
+public class DelfinenMain {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // ALLAN WAS HERE
+    }
     
 }
