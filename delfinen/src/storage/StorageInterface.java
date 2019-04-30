@@ -1,9 +1,12 @@
 package storage;
 
-/**
- *
- * @author wosch
- */
+import delfinen.Medlem;
+
+
 public interface StorageInterface {
+    
+    public void opretMedlem(Medlem medlem);
+
+    public int id();
     
 }

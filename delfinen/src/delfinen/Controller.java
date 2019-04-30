@@ -1,14 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package delfinen;
 
-/**
- *
- * @author allan
- */
+import presentation.UI;
+import storage.StorageInterface;
+
+
 public class Controller {
     
+    private StorageInterface storage;
+    private UI ui;
+    
+    public Controller(UI ui, StorageInterface storage) {
+        this.storage=storage;
+        this.ui=ui;
+    }
+    
+    public void opretMedlem() {
+        
+        Medlem medlem = new Medlem(storage.id(), ui.vælgNavn(), ui.vælgFødt(), ui.tlfNo());
+        
+        storage.opretMedlem(medlem);
+    }
 }
