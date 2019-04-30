@@ -1,5 +1,6 @@
 package presentation;
 
+import java.text.DateFormat;
 import java.util.*;
 
 public class SystemUI implements UI {
@@ -16,6 +17,7 @@ public class SystemUI implements UI {
         }
         return input;  
     }
+    
 
     @Override
     public String vælgFødt() {
