@@ -37,7 +37,6 @@ public class Controller {
                     visAlleResultater();
                     break;
                 case "9":
-                    skrivHistorik();
                     quit = true;
                     break;
                 default:
@@ -62,7 +61,7 @@ public class Controller {
 //    }
 
     private void administrerMedlemmer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        opretMedlem();
     }
 
     private void administrerKontingenter() {
@@ -81,8 +80,6 @@ public class Controller {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void skrivHistorik() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }
 
