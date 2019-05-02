@@ -1,6 +1,6 @@
 package storage;
 
-import delfinen.Medlem;
+import Businesslogic.Medlem;
 
 
 public interface StorageInterface {
