@@ -43,5 +43,26 @@ public class SystemUI implements UI {
         }
         return input;  
     }
+
+    @Override
+    public void visHovedmenu() {
+        System.out.println("Vælg en af følgende muligheder:");
+        System.out.println("1: Administrer medlemmer");
+        System.out.println("2. Administrer kontingenter");
+        System.out.println("3. Vis restancer");
+        System.out.println("4. Indsæt resultater");
+        System.out.println("5. Vis resultater");
+    }
+
+    @Override
+    public String hovedmenuValg() {
+        return scan.nextLine();
+    }
+
+    @Override
+    public void notAnOption() {
+        System.out.println("Ugyldigt input");
+        System.out.println("-------------------------------------");
+    }
 }
     

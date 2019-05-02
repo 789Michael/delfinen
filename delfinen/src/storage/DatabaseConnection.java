@@ -80,5 +80,10 @@ public class DatabaseConnection implements StorageInterface {
             return null;
         }
     }
+
+    @Override
+    public ArrayList<Medlem> visRestancer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

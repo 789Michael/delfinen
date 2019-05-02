@@ -20,6 +20,27 @@ public class FakeUI implements UI {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void visHovedmenu() {
+    System.out.println("Vælg en af følgende muligheder:");
+        System.out.println("1: Administrer medlemmer");
+        System.out.println("2. Administrer kontingenter");
+        System.out.println("3. Vis restancer");
+        System.out.println("4. Indsæt resultater");
+        System.out.println("5. Vis resultater");
+    }
+
+    @Override
+    public String hovedmenuValg() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void notAnOption() {
+        System.out.println("Ugyldigt Input");
+        System.out.println("-----------------------------------");
+    }
+
     
     
 }

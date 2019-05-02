@@ -12,4 +12,6 @@ public interface StorageInterface {
     
     public ArrayList<Medlem> visMedlemmer();
     
+    public ArrayList<Medlem> visRestancer();
+    
 }
