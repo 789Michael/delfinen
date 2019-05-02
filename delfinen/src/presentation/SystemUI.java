@@ -34,20 +34,17 @@ public class SystemUI implements UI {
     }
 
     @Override
-    public String tlfNo() {
+    public int tlfNo() {
         System.out.println("Indtast telefonnummer:");
-        String input = scan.nextLine();
-        while (input.length() == 0 && input.length() > 8) {
-            System.out.println("Forkert input! Indtast telefonnummer på max 8 cifre:");
-            input = scan.nextLine();
-        }
+        int input = scan.nextInt();
+        scan.nextLine();
         return input;  
     }
 
     @Override
     public void visHovedmenu() {
         System.out.println("Vælg en af følgende muligheder:");
-        System.out.println("1: Administrer medlemmer");
+        System.out.println("1. Administrer medlemmer");
         System.out.println("2. Administrer kontingenter");
         System.out.println("3. Vis restancer");
         System.out.println("4. Indsæt resultater");
@@ -65,6 +62,23 @@ public class SystemUI implements UI {
     public void notAnOption() {
         System.out.println("Ugyldigt input");
         System.out.println("-------------------------------------");
+    }
+
+    @Override
+    public void visAdministrerMedlemmer() {
+        System.out.println("Vælg en af følgende muligheder:");
+        System.out.println("1. Opret medlem");
+        System.out.println("2. Fjern medlem");
+        System.out.println("3. Vis medlemmer");
+        System.out.println("-1. Gå tilbage");
+    }
+
+    @Override
+    public int fjernMedlem() {
+        System.out.println("Skriv ID på medlem du vil fjerne");
+        int i = scan.nextInt();
+        scan.nextLine();
+        return i;
     }
 }
     

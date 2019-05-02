@@ -1,5 +1,6 @@
 package Businesslogic;
 
+import java.util.ArrayList;
 import presentation.UI;
 import storage.StorageInterface;
 
@@ -31,8 +32,6 @@ public class Controller {
                 case "4":
                     indsætResultater();
                         break;
-                                        
-                    
                 case "5":
                     visAlleResultater();
                     break;
@@ -49,7 +48,7 @@ public class Controller {
     
     public void opretMedlem() {
         
-        Medlem medlem = new Medlem(-1, ui.vælgNavn(), ui.vælgFødt(), ui.tlfNo());
+        Medlem medlem = new Medlem(-1, ui.vælgNavn(), ui.vælgFødt(), "" + ui.tlfNo());
         
         storage.opretMedlem(medlem);
     }
@@ -61,7 +60,26 @@ public class Controller {
 //    }
 
     private void administrerMedlemmer() {
-        opretMedlem();
+        boolean quit = false;
+        do{
+            ui.visAdministrerMedlemmer();
+            String brugerinput = ui.hovedmenuValg();
+            switch(brugerinput) {
+                case "1":
+                    opretMedlem();
+                    break;
+                case "2":
+                    fjernMedlem();
+                    break;
+                case "3":
+                    visMedlemmer();
+                    break;
+                case "-1":
+                    quit = true;
+                    break;
+            }
+            
+        } while(!quit);
     }
 
     private void administrerKontingenter() {
@@ -78,6 +96,17 @@ public class Controller {
 
     private void visAlleResultater() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void fjernMedlem() {
+        storage.fjernMedlem(ui.fjernMedlem());
+    }
+
+    private void visMedlemmer() {
+        ArrayList<Medlem> medlemmer = storage.visMedlemmer();
+        for(Medlem m : medlemmer){
+            System.out.println(m.toString());
+        }
     }
 
    

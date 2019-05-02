@@ -16,7 +16,7 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public String tlfNo() {
+    public int tlfNo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,6 +39,16 @@ public class FakeUI implements UI {
     public void notAnOption() {
         System.out.println("Ugyldigt Input");
         System.out.println("-----------------------------------");
+    }
+
+    @Override
+    public void visAdministrerMedlemmer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int fjernMedlem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
