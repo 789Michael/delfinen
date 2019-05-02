@@ -7,8 +7,6 @@ import java.util.ArrayList;
 public interface StorageInterface {
     
     public void opretMedlem(Medlem medlem);
-
-    public int id();
     
     public void fjernMedlem(int id);
     

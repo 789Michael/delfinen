@@ -18,6 +18,27 @@ public class Medlem {
         this.alder=alder;
         this.tlfNo=tlfNo;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public LocalDate getAlder() {
+        return alder;
+    }
+
+    public String getTlfNo() {
+        return tlfNo;
+    }
+
+    @Override
+    public String toString() {
+        return "MEDLEM: " + "ID = " + id + "| Navn = " + navn + "| Alder = " + alder + "| Telefon = " + tlfNo + "|";
+    }
     
     
 }

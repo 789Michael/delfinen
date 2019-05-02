@@ -17,7 +17,7 @@ public class Controller {
     
     public void opretMedlem() {
         
-        Medlem medlem = new Medlem(storage.id(), ui.vælgNavn(), ui.vælgFødt(), ui.tlfNo());
+        Medlem medlem = new Medlem(-1, ui.vælgNavn(), ui.vælgFødt(), ui.tlfNo());
         
         storage.opretMedlem(medlem);
     }
