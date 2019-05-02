@@ -20,7 +20,7 @@ public class DelfinenMain {
         DatabaseConnection database = new DatabaseConnection();
         //database.opretMedlem(medlem);
         
-        database.fjernMedlem(11);
+        //database.fjernMedlem(11);
         ArrayList<Medlem> testArray = new ArrayList();
         testArray = database.visMedlemmer();
         for (Medlem m : testArray) {

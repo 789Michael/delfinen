@@ -11,4 +11,10 @@ public interface UI {
     public String vælgNavn();
 
     public String tlfNo();
+    
+    public void visHovedmenu();
+    
+    public String hovedmenuValg();
+    
+    public void notAnOption();
 }
