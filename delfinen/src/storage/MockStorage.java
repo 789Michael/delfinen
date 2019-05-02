@@ -11,16 +11,17 @@ public class MockStorage implements StorageInterface {
     
     ArrayList<Medlem> medlemmer = new ArrayList();
     
+    // FIX ME
     public MockStorage() {
-        medlemmer.add(new Medlem(1, "Palle", "19", "12345678"));
-        medlemmer.add(new Medlem(2, "Peter", "24", "12345678"));
-        medlemmer.add(new Medlem(3, "Per", "26", "12345678"));
-        medlemmer.add(new Medlem(4, "Casper", "21", "12345678"));
-        medlemmer.add(new Medlem(5, "Allan", "22", "12345678"));
-        medlemmer.add(new Medlem(6, "Aske", "19", "12345678"));
-        medlemmer.add(new Medlem(7, "Malthe", "18", "12345678"));
-        medlemmer.add(new Medlem(8, "Christina", "15", "12345678"));
-        medlemmer.add(new Medlem(9, "Fie", "16", "12345678"));
+        medlemmer.add(new Medlem(1, "Palle", null, "12345678"));
+        medlemmer.add(new Medlem(2, "Peter", null, "12345678"));
+        medlemmer.add(new Medlem(3, "Per", null, "12345678"));
+        medlemmer.add(new Medlem(4, "Casper", null, "12345678"));
+        medlemmer.add(new Medlem(5, "Allan", null, "12345678"));
+        medlemmer.add(new Medlem(6, "Aske", null, "12345678"));
+        medlemmer.add(new Medlem(7, "Malthe", null, "12345678"));
+        medlemmer.add(new Medlem(8, "Christina", null, "12345678"));
+        medlemmer.add(new Medlem(9, "Fie", null, "12345678"));
         
         
     }

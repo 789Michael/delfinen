@@ -1,5 +1,7 @@
 package presentation;
 
+import java.time.LocalDate;
+
 
 public class FakeUI implements UI {
 
@@ -9,7 +11,7 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public String vælgFødt() {
+    public LocalDate vælgFødt() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

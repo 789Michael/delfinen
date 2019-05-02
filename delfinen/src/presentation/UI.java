@@ -1,11 +1,12 @@
 package presentation;
 
 import java.text.DateFormat;
+import java.time.LocalDate;
 
 
 public interface UI {
 
-    public String vælgFødt();
+    public LocalDate vælgFødt();
     
     public String vælgNavn();
 

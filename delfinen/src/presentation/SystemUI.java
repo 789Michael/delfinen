@@ -1,6 +1,7 @@
 package presentation;
 
 import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 public class SystemUI implements UI {
@@ -20,14 +21,16 @@ public class SystemUI implements UI {
     
 
     @Override
-    public String vælgFødt() {
-        System.out.println("Indtast fødselsdato på nyt medlem:");
-        String input = scan.nextLine();
-        while (input.length() == 0) {
-            System.out.println("Tomt input! Indtast fødselsdato på nyt medlem:");
-            input = scan.nextLine();
-        }
-        return input;  
+    public LocalDate vælgFødt() {
+        System.out.println("Indtast fødselsår med format [ÅÅÅÅ]:");
+        int årInput = scan.nextInt();
+        System.out.println("Indtast fødselsmåned med format [MM]:");
+        int mInput = scan.nextInt();
+        System.out.println("Indtast fødselsdato med format [DD]:");
+        int dInput = scan.nextInt();
+        int[] i= new int[årInput + mInput + dInput];
+        LocalDate localDate = LocalDate.of(årInput, mInput, dInput);
+         return localDate;
     }
 
     @Override
@@ -40,5 +43,5 @@ public class SystemUI implements UI {
         }
         return input;  
     }
-    
 }
+    
