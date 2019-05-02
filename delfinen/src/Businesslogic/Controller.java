@@ -22,9 +22,4 @@ public class Controller {
         storage.opretMedlem(medlem);
     }
 
-    // Please fix me! :-(
-//    public localDate formaterFødt(String input){
-//        
-//        return localDate;
-//    }
 }

@@ -2,6 +2,7 @@ package presentation;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class SystemUI implements UI {
@@ -28,7 +29,6 @@ public class SystemUI implements UI {
         int mInput = scan.nextInt();
         System.out.println("Indtast fødselsdato med format [DD]:");
         int dInput = scan.nextInt();
-        int[] i= new int[årInput + mInput + dInput];
         LocalDate localDate = LocalDate.of(årInput, mInput, dInput);
          return localDate;
     }
@@ -37,8 +37,8 @@ public class SystemUI implements UI {
     public String tlfNo() {
         System.out.println("Indtast telefonnummer:");
         String input = scan.nextLine();
-        while (input.length() == 0) {
-            System.out.println("Tomt input! Indtast telefonnummer:");
+        while (input.length() == 0 && input.length() > 8) {
+            System.out.println("Forkert input! Indtast telefonnummer på max 8 cifre:");
             input = scan.nextLine();
         }
         return input;  
