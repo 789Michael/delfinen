@@ -29,12 +29,6 @@ public class Controller {
                 case "3":
                     visRestancer();
                     break;
-                case "4":
-                    indsætResultater();
-                        break;
-                case "5":
-                    visAlleResultater();
-                    break;
                 case "9":
                     quit = true;
                     break;
@@ -46,19 +40,6 @@ public class Controller {
         } while(!quit);
     }
     
-    public void opretMedlem() {
-        
-        Medlem medlem = new Medlem(-1, ui.vælgNavn(), ui.vælgFødt(), "" + ui.tlfNo());
-        
-        storage.opretMedlem(medlem);
-    }
-
-    // Please fix me! :-(
-//    public localDate formaterFødt(String input){
-//        
-//        return localDate;
-//    }
-
     private void administrerMedlemmer() {
         boolean quit = false;
         do{
@@ -74,12 +55,34 @@ public class Controller {
                 case "3":
                     visMedlemmer();
                     break;
+                case "4":
+                    ændreMedlemsAktivitet();
+                    break;
                 case "-1":
                     quit = true;
                     break;
             }
             
         } while(!quit);
+    }
+        
+    public void opretMedlem() {
+        
+        Medlem medlem = new Medlem(-1, ui.vælgNavn(), ui.vælgFødt(), "" + ui.tlfNo());
+        
+        storage.opretMedlem(medlem);
+    }
+    
+    private void fjernMedlem() {
+        storage.fjernMedlem(ui.fjernMedlem());
+    }
+    
+    private void visMedlemmer() {
+
+    }
+
+    private void ændreMedlemsAktivitet(){
+        
     }
 
     private void administrerKontingenter() {
@@ -89,26 +92,15 @@ public class Controller {
     private void visRestancer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    private void opdaterKontigent(){
+         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    private void indsætResultater() {
+    private void administrerTræningOgKonkurrencer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    private void visAlleResultater() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void fjernMedlem() {
-        storage.fjernMedlem(ui.fjernMedlem());
-    }
-
-    private void visMedlemmer() {
-        ArrayList<Medlem> medlemmer = storage.visMedlemmer();
-        for(Medlem m : medlemmer){
-            System.out.println(m.toString());
-        }
-    }
-
+   
    
 }
 

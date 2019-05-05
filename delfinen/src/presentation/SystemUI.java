@@ -14,9 +14,7 @@ public class SystemUI implements UI {
         System.out.println("Vælg en af følgende muligheder:");
         System.out.println("1. Administrer medlemmer");
         System.out.println("2. Administrer kontingenter");
-        System.out.println("3. Vis restancer");
-        System.out.println("4. Indsæt resultater");
-        System.out.println("5. Vis resultater");
+        System.out.println("3. Administrer Træning Og Konkurrencer");
         System.out.println("9. Afslut");
 
     }
@@ -27,24 +25,24 @@ public class SystemUI implements UI {
         System.out.println("1. Opret medlem");
         System.out.println("2. Fjern medlem");
         System.out.println("3. Vis medlemmer");
+        System.out.println("4. Ændre medlems aktivitet");
         System.out.println("-1. Gå tilbage");
     }
     
     @Override
     public void printAdministrerKontigenter() {
         System.out.println("Vælg en af følgende muligheder:");
-        System.out.println("1. Opret medlem");
-        System.out.println("2. Fjern medlem");
-        System.out.println("3. Vis medlemmer");
+        System.out.println("1. Vis Restancer");
+        System.out.println("2. Opdater medlems restance");
         System.out.println("-1. Gå tilbage");
     }
     
     @Override
     public void printAdministrerTræningOgKonkurrencer() {
         System.out.println("Vælg en af følgende muligheder:");
-        System.out.println("1. Opret medlem");
-        System.out.println("2. Fjern medlem");
-        System.out.println("3. Vis medlemmer");
+        System.out.println("1. Opdater trænings tider");
+        System.out.println("2. Indsæt Konkurrence tider");
+        System.out.println("3. Vis 5 Svømmere");
         System.out.println("-1. Gå tilbage");
     }
 
