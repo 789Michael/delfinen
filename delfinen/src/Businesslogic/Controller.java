@@ -17,8 +17,8 @@ public class Controller {
     public void start() {
         boolean quit = false;
         do{
-            ui.visHovedmenu();
-            String brugerinput = ui.hovedmenuValg();
+            ui.printHovedmenu();
+            String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
                     administrerMedlemmer();
@@ -62,8 +62,8 @@ public class Controller {
     private void administrerMedlemmer() {
         boolean quit = false;
         do{
-            ui.visAdministrerMedlemmer();
-            String brugerinput = ui.hovedmenuValg();
+            ui.printAdministrerMedlemmer();
+            String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
                     opretMedlem();

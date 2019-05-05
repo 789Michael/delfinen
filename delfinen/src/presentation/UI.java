@@ -14,11 +14,15 @@ public interface UI {
     
     public int fjernMedlem();
     
-    public void visHovedmenu();
+    public void printHovedmenu();
     
-    public String hovedmenuValg();
+    public String scanInputMenu();
     
     public void notAnOption();
 
-    public void visAdministrerMedlemmer();
+    public void printAdministrerMedlemmer();
+    
+    public void printAdministrerKontigenter();
+            
+    public void printAdministrerTræningOgKonkurrencer();
 }

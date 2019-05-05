@@ -21,7 +21,7 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public void visHovedmenu() {
+    public void printHovedmenu() {
     System.out.println("Vælg en af følgende muligheder:");
         System.out.println("1: Administrer medlemmer");
         System.out.println("2. Administrer kontingenter");
@@ -31,7 +31,7 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public String hovedmenuValg() {
+    public String scanInputMenu() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -42,7 +42,7 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public void visAdministrerMedlemmer() {
+    public void printAdministrerMedlemmer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

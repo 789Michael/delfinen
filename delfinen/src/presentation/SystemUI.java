@@ -10,6 +10,52 @@ public class SystemUI implements UI {
     Scanner scan = new Scanner(System.in);
 
     @Override
+    public void printHovedmenu() {
+        System.out.println("Vælg en af følgende muligheder:");
+        System.out.println("1. Administrer medlemmer");
+        System.out.println("2. Administrer kontingenter");
+        System.out.println("3. Vis restancer");
+        System.out.println("4. Indsæt resultater");
+        System.out.println("5. Vis resultater");
+        System.out.println("9. Afslut");
+
+    }
+    
+    @Override
+    public void printAdministrerMedlemmer() {
+        System.out.println("Vælg en af følgende muligheder:");
+        System.out.println("1. Opret medlem");
+        System.out.println("2. Fjern medlem");
+        System.out.println("3. Vis medlemmer");
+        System.out.println("-1. Gå tilbage");
+    }
+    
+    @Override
+    public void printAdministrerKontigenter() {
+        System.out.println("Vælg en af følgende muligheder:");
+        System.out.println("1. Opret medlem");
+        System.out.println("2. Fjern medlem");
+        System.out.println("3. Vis medlemmer");
+        System.out.println("-1. Gå tilbage");
+    }
+    
+    @Override
+    public void printAdministrerTræningOgKonkurrencer() {
+        System.out.println("Vælg en af følgende muligheder:");
+        System.out.println("1. Opret medlem");
+        System.out.println("2. Fjern medlem");
+        System.out.println("3. Vis medlemmer");
+        System.out.println("-1. Gå tilbage");
+    }
+
+
+    @Override
+    public String scanInputMenu() {
+        return scan.nextLine();
+    }
+
+    
+    @Override
     public String vælgNavn() {
         System.out.println("Indtast navn på nyt medlem:");
         String input = scan.nextLine();
@@ -40,38 +86,13 @@ public class SystemUI implements UI {
         scan.nextLine();
         return input;  
     }
-
-    @Override
-    public void visHovedmenu() {
-        System.out.println("Vælg en af følgende muligheder:");
-        System.out.println("1. Administrer medlemmer");
-        System.out.println("2. Administrer kontingenter");
-        System.out.println("3. Vis restancer");
-        System.out.println("4. Indsæt resultater");
-        System.out.println("5. Vis resultater");
-        System.out.println("9. Afslut");
-
-    }
-
-    @Override
-    public String hovedmenuValg() {
-        return scan.nextLine();
-    }
-
+    
     @Override
     public void notAnOption() {
         System.out.println("Ugyldigt input");
         System.out.println("-------------------------------------");
     }
-
-    @Override
-    public void visAdministrerMedlemmer() {
-        System.out.println("Vælg en af følgende muligheder:");
-        System.out.println("1. Opret medlem");
-        System.out.println("2. Fjern medlem");
-        System.out.println("3. Vis medlemmer");
-        System.out.println("-1. Gå tilbage");
-    }
+    
 
     @Override
     public int fjernMedlem() {
