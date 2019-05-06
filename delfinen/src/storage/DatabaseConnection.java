@@ -1,6 +1,7 @@
 package storage;
 
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -100,5 +101,57 @@ public class DatabaseConnection implements StorageInterface {
     public Medlem getMedlemMedId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public ArrayList<TræningMedlem> visTop5() {
+        try {
+        Connection connection = makeConnection();
+        Statement statement = connection.createStatement();
+        ResultSet result = statement.executeQuery("SELECT * FROM medlem");
+           
+        ArrayList<TræningMedlem> returnArray = new ArrayList();
+           
+        while (result.next()) {
+            int id = result.getInt("ID");
+            String navn = result.getString("MNAME");
+            Date date = result.getDate("ALDER");
+            String tlfNo = result.getString("TLFNO");
+            int træningBryst = result.getInt("BRYST");
+            Date brystDato = result.getDate("BRYSTDATO");
+            int træningBfly = result.getInt("BFLY");
+            Date bfDato = result.getDate("BFDATO");
+            int træningCrawl = result.getInt("CRAWL");
+            Date crawlDato = result.getDate("CRAWLDATO");
+            int træningRcrawl = result.getInt("RCRAWL");
+            Date rcDato = result.getDate("RCRAWLDATO");
+            returnArray.add(new TræningMedlem(id, navn, date.toLocalDate(), tlfNo, træningBryst, brystDato.toLocalDate(), træningBfly, bfDato.toLocalDate(), træningCrawl, crawlDato.toLocalDate(), træningRcrawl, rcDato.toLocalDate()));
+           }
+           return returnArray;
+           
+        }
+        catch (Exception e) {
+            System.out.println("Fejl i visMedlemmer: " + e.getMessage());
+            return null;
+        }
+    }
+        /*public void opdaterTræningsTider(TræningMedlem træningMedlem){
+            try {
+            Connection connection = makeConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES ('" + træningMedlem.getId())
+                    }
+                    catch (Exception e){
+                        System.out.println("Fejl i Opdater Træningstider: " + e.getMessage());
+                    }
+                }
+        public void opdaterKonkurrenceTider(){
+        */    
+        }
+        
+        
+        
+        
     
-}
+
+
+

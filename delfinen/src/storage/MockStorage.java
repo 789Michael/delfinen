@@ -1,6 +1,7 @@
 package storage;
 
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
@@ -69,6 +70,11 @@ public class MockStorage implements StorageInterface {
             }
         }
         return returnArray;
+    }
+
+    @Override
+    public ArrayList<TræningMedlem> visTop5() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     private int calculateDifference(LocalDate kontigentsDato, LocalDate currentDate) {
