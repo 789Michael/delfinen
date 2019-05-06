@@ -119,5 +119,24 @@ public class DatabaseConnection implements StorageInterface {
             return null;
         }
     }
-  
-}
+        /*public void opdaterTræningsTider(TræningMedlem træningMedlem){
+            try {
+            Connection connection = makeConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES ('" + træningMedlem.getId())
+                    }
+                    catch (Exception e){
+                        System.out.println("Fejl i Opdater Træningstider: " + e.getMessage());
+                    }
+                }
+        public void opdaterKonkurrenceTider(){
+        */    
+        }
+        
+        
+        
+        
+    
+
+
+
