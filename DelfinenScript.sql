@@ -7,7 +7,9 @@ CREATE TABLE MEDLEM (
 	ID INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     MNAME VARCHAR(30) NOT NULL,
     ALDER DATE,
-    TLFNO VARCHAR(8) NOT NULL
+    TLFNO VARCHAR(8) NOT NULL,
+    AKTIV BIT NOT NULL,
+    KONTIGENT DATE NOT NULL
 );
 
 CREATE TABLE TRÆNINGSTIDER (
@@ -44,15 +46,25 @@ CREATE TABLE RESULTATER (
 );
 
 # Opretter medlemmer til "medlem" tabellen
-insert into medlem (mname, alder, tlfno) values ("Per Birkerød", "1995-06-15", "12345678");
-insert into medlem (mname, alder, tlfno) values ("Kirsten Juhl", "1982-10-7", "12345678");
-insert into medlem (mname, alder, tlfno) values ("Aske Thorsen", "2003-10-12", "12345678");
-insert into medlem (mname, alder, tlfno) values ("Casper Thomassen", "1930-12-24", "12345678");
-insert into medlem (mname, alder, tlfno) values ("Allan Simonsen", "2007-11-14", "12345678");
-insert into medlem (mname, alder, tlfno) values ("Malthe Woschek", "1983-02-07", "12345678");
-insert into medlem (mname, alder, tlfno) values ("Andreas Petersen", "1996-08-19", "12345678");
-insert into medlem (mname, alder, tlfno) values ("Max Pepsi", "2008-02-14", "12345678");
-
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Per Birkerød", "1995-06-15", "12345678", 1, "2019-05-06");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Kirsten Juhl", "1982-10-7", "12345678", 1, "2019-05-06");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Aske Thorsen", "2003-10-12", "12345678", 1, "2019-05-06");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Casper Thomassen", "1930-12-24", "12345678", 1, "2019-05-06");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Allan Simonsen", "2007-11-14", "12345678", 1, "2019-05-06");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Malthe Woschek", "1983-02-07", "12345678", 1, "2019-05-06");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Andreas Petersen", "1996-08-19", "12345678", 1, "2019-05-06");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Max Pepsi", "2008-02-14", "12345678", 1, "2019-05-06");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Palle", "2005-3-12", "12345678", 1, "2019-3-12");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Peter Pedal", "2001-3-12", "12345678", 1, "2019-1-1");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Per", "1998-3-12", "12345678", 1, "2019-4-12");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Casper", "1970-3-12", "12345678", 1, "2018-2-12");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Allan", "1950-3-12", "12345678", 1, "2018-1-12");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Aske", "1998-3-12", "12345678", 1, "2018-12-12");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Malthe", "2005-3-12", "12345678", 0, "2018-4-14");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Christina", "1919-3-12", "12345678", 0, "2018-2-4");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Fie", "1970-3-12", "12345678", 0, "2019-3-12");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("MORTY", "2005-3-12", "12345678", 1, "2018-4-14");
+insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("RICK", "1970-3-12", "12345678", 0, "2018-4-14");
 # Opretter træningstider til "træningstider" tabellen
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (1, 40, "2012-04-13", 250, "2010-11-02", 35, "2017-07-18", 0, null);
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (2, 80, "2012-04-13", 330, "2010-11-02", 53, "2017-07-18", 88, "2016-05-24");
