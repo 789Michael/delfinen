@@ -24,4 +24,5 @@ public interface StorageInterface {
     
     public ArrayList<TræningMedlem> visTop5();
     
+    
 }

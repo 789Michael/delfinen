@@ -27,13 +27,9 @@ public class DelfinenMain {
         testArray = database.visMedlemmer();
         for (Medlem m : testArray) {
             System.out.println(m.toString());*/
-<<<<<<< HEAD
-        Controller crtl = new Controller(new SystemUI(), new MockStorage());
-        crtl.start();
-=======
+
         Controller ctrl = new Controller(new SystemUI(), new DatabaseConnection());
         ctrl.start();
->>>>>>> 1badbb5dc8d058223d430409324a58d183edfa4b
         }
         
         

@@ -19,7 +19,7 @@ public class KonMedlem extends Medlem {
     private int rcPlads;
     
     public KonMedlem(int id, String navn, LocalDate alder, String tlfNo, int sID, String sNavn, int bryst, int bPlads, int bfly, int bfPlads, int crawl, int cPlads, int rcrawl, int rcPlads) {
-        super(id, navn, alder, tlfNo);
+        super(id, navn, alder, tlfNo, true);
         this.sID = sID;
         this.sNavn = sNavn;
         this.bryst = bryst;

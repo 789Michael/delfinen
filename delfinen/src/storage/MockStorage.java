@@ -76,6 +76,7 @@ public class MockStorage implements StorageInterface {
     public ArrayList<TræningMedlem> visTop5() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
     private int calculateDifference(LocalDate kontigentsDato, LocalDate currentDate) {
         if ((kontigentsDato != null) && (currentDate != null)) {

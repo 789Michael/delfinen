@@ -15,7 +15,7 @@ public class TræningMedlem extends Medlem {
   
     
     public TræningMedlem(int id, String navn, LocalDate alder, String tlfNo, int træningBryst, LocalDate brystDato, int træningBfly, LocalDate bfDato, int træningCrawl, LocalDate crawlDato, int træningRcrawl, LocalDate rcDato) {
-        super(id, navn, alder, tlfNo);
+        super(id, navn, alder, tlfNo, true);
         this.træningBryst = træningBryst;
         this.træningBfly = træningBfly;
         this.træningCrawl = træningCrawl;
