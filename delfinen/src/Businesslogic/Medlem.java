@@ -24,7 +24,7 @@ public class Medlem {
         kontigentsDato = LocalDate.now();
     }
     
-        public Medlem (int id, String navn, LocalDate alder, String tlfNo, Boolean aktivMedlem, LocalDate kontigentsDato) {
+    public Medlem (int id, String navn, LocalDate alder, String tlfNo, Boolean aktivMedlem, LocalDate kontigentsDato) {
         this.id = id;
         this.navn = navn;
         this.alder = alder;

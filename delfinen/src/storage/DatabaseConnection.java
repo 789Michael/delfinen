@@ -5,9 +5,11 @@ import Businesslogic.TræningMedlem;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 /**
@@ -34,7 +36,7 @@ public class DatabaseConnection implements StorageInterface {
         try {
            Connection connection = makeConnection();
            Statement statement = connection.createStatement();
-           statement.executeUpdate("INSERT INTO medlem (mname, alder, tlfno) VALUES ('" + medlem.getNavn() + "','" + medlem.getFødselsdag().toString() + "','" + medlem.getTlfNo() + "');");
+           statement.executeUpdate("INSERT INTO medlem (mname, alder, tlfno, aktiv, kontigent) VALUES ('" + medlem.getNavn() + "','" + medlem.getFødselsdag().toString() + "','" + medlem.getTlfNo() + "'," + ((medlem.isAktivMedlem()) ? 1 : 0) + ",'" + medlem.getKontigentsDato()  + "');");
             
         }
         catch (Exception e){
@@ -71,7 +73,9 @@ public class DatabaseConnection implements StorageInterface {
               String navn = result.getString("MNAME");
               Date date = result.getDate("ALDER");
               String tlfNo = result.getString("TLFNO");
-              //returnArray.add(new Medlem(id, navn, date.toLocalDate(), tlfNo));
+              Boolean aktiv = result.getBoolean("AKTIV");
+              Date kontigent = result.getDate("KONTIGENT");
+              returnArray.add(new Medlem(id, navn, date.toLocalDate(), tlfNo, aktiv, kontigent.toLocalDate()));
            }
            return returnArray;
            
@@ -84,22 +88,65 @@ public class DatabaseConnection implements StorageInterface {
 
     @Override
     public void ændreMedlemsAktivitet(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            System.out.println("test1");
+           Connection connection = makeConnection();
+           Statement statement = connection.createStatement();
+           statement.executeUpdate("UPDATE medlem SET AKTIV = " + ((getMedlemMedId(id).isAktivMedlem()) ? 0 : 1)  + " WHERE ID = " + id + ";");
+      
+        }
+        catch (Exception e) {
+            System.out.println("Fejl i ændreMedlemsAktivitet: " + e.getMessage());
+        }
     }
 
     @Override
     public ArrayList<Medlem> getRestancer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Medlem> alleMedlemmer = visMedlemmer();
+              ArrayList<Medlem> returnArray = new ArrayList<Medlem>();
+        for(Medlem m : alleMedlemmer){
+            if(calculateDifference(m.getKontigentsDato(),LocalDate.now()) >= 1){
+                returnArray.add(m);
+            }
+        }
+        return returnArray;
+    }
+    
+    private int calculateDifference(LocalDate kontigentsDato, LocalDate currentDate) {
+        if ((kontigentsDato != null) && (currentDate != null)) {
+            return Period.between(kontigentsDato, currentDate).getYears();
+        } else {
+            return 0;
+        }
     }
 
     @Override
     public void opdaterKontigentsDato(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Medlem medlem = getMedlemMedId(id);
+        try{
+        Connection connection = makeConnection();
+        Statement statement = connection.createStatement();
+        statement.executeUpdate("UPDATE medlem SET kontigent = '" + medlem.getKontigentsDato().plusYears(1) + "' WHERE ID = " + id + ";");
+        
+        }catch(Exception e){
+            System.out.println("fejl i opdater kontigent " + e.getMessage());
+        }
     }
 
     @Override
     public Medlem getMedlemMedId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       try {
+           Connection connection = makeConnection();
+           Statement statement = connection.createStatement();
+           ResultSet result = statement.executeQuery("SELECT * FROM medlem WHERE ID = " + id + ";");
+           
+           result.next();
+           return new Medlem(result.getInt("ID"), result.getString("MNAME"),result.getDate("ALDER").toLocalDate(), result.getString("TLFNO"), result.getBoolean("AKTIV"), result.getDate("KONTIGENT").toLocalDate() );
+        }
+        catch (Exception e) {
+            System.out.println("Fejl i getMedlemMedID: " + e.getMessage());
+            return null;
+        }
     }
 
     @Override
