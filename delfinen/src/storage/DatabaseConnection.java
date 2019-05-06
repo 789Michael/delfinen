@@ -1,6 +1,7 @@
 package storage;
 
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -87,20 +88,28 @@ public class DatabaseConnection implements StorageInterface {
     }
 
     @Override
-    public ArrayList<Medlem> visTop5() {
+    public ArrayList<TræningMedlem> visTop5() {
         try {
         Connection connection = makeConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM medlem");
            
-        ArrayList<Medlem> returnArray = new ArrayList();
+        ArrayList<TræningMedlem> returnArray = new ArrayList();
            
         while (result.next()) {
             int id = result.getInt("ID");
             String navn = result.getString("MNAME");
             Date date = result.getDate("ALDER");
             String tlfNo = result.getString("TLFNO");
-            returnArray.add(new Medlem(id, navn, date.toLocalDate(), tlfNo));
+            int træningBryst = result.getInt("BRYST");
+            Date brystDato = result.getDate("BRYSTDATO");
+            int træningBfly = result.getInt("BFLY");
+            Date bfDato = result.getDate("BFDATO");
+            int træningCrawl = result.getInt("CRAWL");
+            Date crawlDato = result.getDate("CRAWLDATO");
+            int træningRcrawl = result.getInt("RCRAWL");
+            Date rcDato = result.getDate("RCRAWLDATO");
+            returnArray.add(new TræningMedlem(id, navn, date.toLocalDate(), tlfNo, træningBryst, brystDato.toLocalDate(), træningBfly, bfDato.toLocalDate(), træningCrawl, crawlDato.toLocalDate(), træningRcrawl, rcDato.toLocalDate()));
            }
            return returnArray;
            

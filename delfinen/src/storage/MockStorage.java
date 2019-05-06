@@ -1,6 +1,7 @@
 package storage;
 
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -52,7 +53,7 @@ public class MockStorage implements StorageInterface {
     }
 
     @Override
-    public ArrayList<Medlem> visTop5() {
+    public ArrayList<TræningMedlem> visTop5() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

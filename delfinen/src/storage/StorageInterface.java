@@ -1,6 +1,7 @@
 package storage;
 
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.util.ArrayList;
 
 
@@ -14,6 +15,6 @@ public interface StorageInterface {
     
     public ArrayList<Medlem> visRestancer();
     
-    public ArrayList<Medlem> visTop5();
+    public ArrayList<TræningMedlem> visTop5();
     
 }
