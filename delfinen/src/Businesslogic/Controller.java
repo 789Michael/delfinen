@@ -68,33 +68,69 @@ public class Controller {
         
     public void opretMedlem() {
         
-        Medlem medlem = new Medlem(-1, ui.vælgNavn(), ui.vælgFødt(), "" + ui.tlfNo());
+        Medlem medlem = new Medlem(-1, ui.vælgNavn(), ui.vælgFødt(), "" + ui.tlfNo(), ui.aktivMedlem());
         
         storage.opretMedlem(medlem);
     }
     
     private void fjernMedlem() {
+        ui.visMedlemmer(storage.visMedlemmer());
         storage.fjernMedlem(ui.fjernMedlem());
     }
     
     private void visMedlemmer() {
-
+        ui.visMedlemmer(storage.visMedlemmer());
     }
 
     private void ændreMedlemsAktivitet(){
-        
+        ui.visMedlemmer(storage.visMedlemmer());
+        storage.ændreMedlemsAktivitet(ui.ændreMedlemsAktivitet());
     }
 
     private void administrerKontingenter() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean quit = false;
+        do{
+            ui.printAdministrerKontigenter();
+            String brugerinput = ui.scanInputMenu();
+            switch(brugerinput) {
+                case "1":
+                    visRestancer();
+                    break;
+                case "2":
+                    opdaterKontigent();
+                    break;
+                case "-1":
+                    quit = true;
+                    break;
+            }
+            
+        } while(!quit);
     }
 
     private void visRestancer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ui.visRestancer(storage.getRestancer());
     }
     
     private void opdaterKontigent(){
-         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ui.visMedlemmer(storage.visMedlemmer());
+        int i = ui.opdaterKontigentsDato();
+        ui.kontigentKvitering(udregnKontigent(i));
+        storage.opdaterKontigentsDato(i);
+    }
+    
+    private int udregnKontigent(int id){
+        Medlem medlem = storage.getMedlemMedId(id);
+        if(medlem.isAktivMedlem()){
+            if(medlem.getAlder() < 18){
+                return 1000;
+            }else if(medlem.getAlder() <= 60){
+                return 1600;
+            }else{
+                return 1200;
+            }
+        }else{
+            return 500;
+        }
     }
 
     private void administrerTræningOgKonkurrencer() {

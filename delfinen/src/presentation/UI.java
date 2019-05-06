@@ -1,7 +1,9 @@
 package presentation;
 
+import Businesslogic.Medlem;
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public interface UI {
@@ -14,6 +16,8 @@ public interface UI {
     
     public int fjernMedlem();
     
+    public void visMedlemmer(ArrayList<Medlem> medlemmer);
+    
     public void printHovedmenu();
     
     public String scanInputMenu();
@@ -25,4 +29,15 @@ public interface UI {
     public void printAdministrerKontigenter();
             
     public void printAdministrerTræningOgKonkurrencer();
+   
+    public boolean aktivMedlem();
+    
+    public int ændreMedlemsAktivitet();
+    
+    public void visRestancer(ArrayList<Medlem> medlemmer);
+    
+    public int opdaterKontigentsDato();
+    
+    public void kontigentKvitering(int pris);
+
 }

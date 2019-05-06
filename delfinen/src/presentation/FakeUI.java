@@ -1,6 +1,8 @@
 package presentation;
 
+import Businesslogic.Medlem;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class FakeUI implements UI {
@@ -58,6 +60,36 @@ public class FakeUI implements UI {
 
     @Override
     public void printAdministrerTræningOgKonkurrencer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void visMedlemmer(ArrayList<Medlem> medlemmer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean aktivMedlem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int ændreMedlemsAktivitet() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void visRestancer(ArrayList<Medlem> medlemmer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int opdaterKontigentsDato() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void kontigentKvitering(int pris) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

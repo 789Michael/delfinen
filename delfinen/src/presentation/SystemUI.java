@@ -1,5 +1,6 @@
 package presentation;
 
+import Businesslogic.Medlem;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -98,6 +99,83 @@ public class SystemUI implements UI {
         int i = scan.nextInt();
         scan.nextLine();
         return i;
+    }
+
+    @Override
+    public void visMedlemmer(ArrayList<Medlem> medlemmer) {
+        for(Medlem m : medlemmer){
+            System.out.println(m.toString());
+        }
+        System.out.println("____________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+        boolean inputFormat = false;
+            while(!inputFormat){
+                String input = scan.nextLine();
+                if(input.equals("-1")) {
+                    inputFormat = true;
+                }
+                else{
+                    System.out.println("Ugyldigt input, prøv igen:");
+                }
+                
+            } 
+        System.out.println("-----------------------------------------------");        
+    }
+    
+    public boolean aktivMedlem(){
+        System.out.println("Tast 1 for aktivt medlem, 2 for passivMedlem");
+        int input = scan.nextInt();
+        scan.nextLine();
+        if(input == 1){
+            return true;
+        }else if(input == 2){
+            return false;
+        }else{
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public int ændreMedlemsAktivitet() {
+        System.out.println("Skriv ID på medlem du vil ændre aktivitet for");
+        int i = scan.nextInt();
+        scan.nextLine();
+        return i;
+    }
+
+    @Override
+    public void visRestancer(ArrayList<Medlem> medlemmer) {
+        for(Medlem m : medlemmer){
+            System.out.println(m.toString());
+        }
+        System.out.println("____________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+        boolean inputFormat = false;
+            while(!inputFormat){
+                String input = scan.nextLine();
+                if(input.equals("-1")) {
+                    inputFormat = true;
+                }
+                else{
+                    System.out.println("Ugyldigt input, prøv igen:");
+                }
+                
+            } 
+        System.out.println("-----------------------------------------------");        
+    }
+
+    @Override
+    public int opdaterKontigentsDato() {
+        System.out.println("Skriv ID på medlem du vil opdatere kontigent på");
+        int i = scan.nextInt();
+        scan.nextLine();
+        return i;    
+    }
+
+    @Override
+    public void kontigentKvitering(int pris) {
+        System.out.println("Prisen for kontigent fornyelse er: " + pris + "DKK. bekræft betaling med 1");
+        scan.nextLine();
     }
 }
     

@@ -33,7 +33,7 @@ public class DatabaseConnection implements StorageInterface {
         try {
            Connection connection = makeConnection();
            Statement statement = connection.createStatement();
-           statement.executeUpdate("INSERT INTO medlem (mname, alder, tlfno) VALUES ('" + medlem.getNavn() + "','" + medlem.getAlder().toString() + "','" + medlem.getTlfNo() + "');");
+           statement.executeUpdate("INSERT INTO medlem (mname, alder, tlfno) VALUES ('" + medlem.getNavn() + "','" + medlem.getFødselsdag().toString() + "','" + medlem.getTlfNo() + "');");
             
         }
         catch (Exception e){
@@ -70,7 +70,7 @@ public class DatabaseConnection implements StorageInterface {
               String navn = result.getString("MNAME");
               Date date = result.getDate("ALDER");
               String tlfNo = result.getString("TLFNO");
-              returnArray.add(new Medlem(id, navn, date.toLocalDate(), tlfNo));
+              //returnArray.add(new Medlem(id, navn, date.toLocalDate(), tlfNo));
            }
            return returnArray;
            
@@ -82,7 +82,22 @@ public class DatabaseConnection implements StorageInterface {
     }
 
     @Override
-    public ArrayList<Medlem> visRestancer() {
+    public void ændreMedlemsAktivitet(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Medlem> getRestancer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void opdaterKontigentsDato(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Medlem getMedlemMedId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

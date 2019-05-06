@@ -2,6 +2,7 @@ package Businesslogic;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 
 
@@ -11,12 +12,25 @@ public class Medlem {
     private String navn;
     private LocalDate alder;
     private String tlfNo;
+    private boolean aktivMedlem;
+    private LocalDate kontigentsDato;
     
-    public Medlem (int id, String navn, LocalDate alder, String tlfNo) {
-        this.id=id;
-        this.navn=navn;
-        this.alder=alder;
-        this.tlfNo=tlfNo;
+    public Medlem (int id, String navn, LocalDate alder, String tlfNo, Boolean aktivMedlem) {
+        this.id = id;
+        this.navn = navn;
+        this.alder = alder;
+        this.tlfNo = tlfNo;
+        this.aktivMedlem = aktivMedlem;
+        kontigentsDato = LocalDate.now();
+    }
+    
+        public Medlem (int id, String navn, LocalDate alder, String tlfNo, Boolean aktivMedlem, LocalDate kontigentsDato) {
+        this.id = id;
+        this.navn = navn;
+        this.alder = alder;
+        this.tlfNo = tlfNo;
+        this.aktivMedlem = aktivMedlem;
+        this.kontigentsDato = kontigentsDato;
     }
 
     public int getId() {
@@ -27,7 +41,11 @@ public class Medlem {
         return navn;
     }
 
-    public LocalDate getAlder() {
+    public int getAlder() {
+        return calculateAge(alder, LocalDate.now());
+    }
+    
+    public LocalDate getFødselsdag(){
         return alder;
     }
 
@@ -35,10 +53,33 @@ public class Medlem {
         return tlfNo;
     }
 
+    public boolean isAktivMedlem() {
+        return aktivMedlem;
+    }
+
+    public void setAktivMedlem(boolean aktivMedlem) {
+        this.aktivMedlem = aktivMedlem;
+    }
+
+    public LocalDate getKontigentsDato() {
+        return kontigentsDato;
+    }
+
+    public void setKontigentsDato(LocalDate kontigentsDato) {
+        this.kontigentsDato = kontigentsDato;
+    }
+
     @Override
     public String toString() {
-        return "MEDLEM: " + "ID = " + id + "| Navn = " + navn + "| Alder = " + alder + "| Telefon = " + tlfNo + "|";
+        return "Medlem{" + "id=" + id + ", navn=" + navn + ", alder=" + calculateAge(alder, LocalDate.now()) + ", tlfNo=" + tlfNo + ", aktivMedlem=" + aktivMedlem + ", kontigentsDato=" + kontigentsDato + '}';
     }
-    
-    
+
+    public int calculateAge(LocalDate birthDate, LocalDate currentDate) {
+        if ((birthDate != null) && (currentDate != null)) {
+            return Period.between(birthDate, currentDate).getYears();
+        } else {
+            return 0;
+        }
+    }
 }
+    

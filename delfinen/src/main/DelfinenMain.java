@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import presentation.SystemUI;
 import storage.DatabaseConnection;
+import storage.MockStorage;
 
 /**
  *
@@ -26,7 +27,7 @@ public class DelfinenMain {
         testArray = database.visMedlemmer();
         for (Medlem m : testArray) {
             System.out.println(m.toString());*/
-        Controller crtl = new Controller(new SystemUI(), new DatabaseConnection());
+        Controller crtl = new Controller(new SystemUI(), new MockStorage());
         crtl.start();
         }
         

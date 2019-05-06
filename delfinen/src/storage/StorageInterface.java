@@ -12,6 +12,13 @@ public interface StorageInterface {
     
     public ArrayList<Medlem> visMedlemmer();
     
-    public ArrayList<Medlem> visRestancer();
+    
+    public void ændreMedlemsAktivitet(int id);
+    
+    public ArrayList<Medlem> getRestancer();
+    
+    public void opdaterKontigentsDato(int id);
+    
+    public Medlem getMedlemMedId(int id);
     
 }
