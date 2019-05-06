@@ -1,6 +1,7 @@
 package storage;
 
 import Businesslogic.Medlem;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -28,17 +29,21 @@ public class MockStorage implements StorageInterface {
 
     @Override
     public void opretMedlem(Medlem medlem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        medlemmer.add(new Medlem(10, "Sara", null, "12345678"));
+        
     }
 
     @Override
     public void fjernMedlem(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       for (int i=0; i< medlemmer.size(); i++){
+            if(medlemmer.get(i).getId() == id){
+                medlemmer.remove(i);
     }
-
+       }
+    }
     @Override
     public ArrayList<Medlem> visMedlemmer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return medlemmer;
     }
 
     @Override
