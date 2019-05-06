@@ -14,4 +14,6 @@ public interface StorageInterface {
     
     public ArrayList<Medlem> visRestancer();
     
+    public ArrayList<Medlem> visTop5();
+    
 }

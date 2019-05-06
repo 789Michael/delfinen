@@ -85,5 +85,30 @@ public class DatabaseConnection implements StorageInterface {
     public ArrayList<Medlem> visRestancer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public ArrayList<Medlem> visTop5() {
+        try {
+        Connection connection = makeConnection();
+        Statement statement = connection.createStatement();
+        ResultSet result = statement.executeQuery("SELECT * FROM medlem");
+           
+        ArrayList<Medlem> returnArray = new ArrayList();
+           
+        while (result.next()) {
+            int id = result.getInt("ID");
+            String navn = result.getString("MNAME");
+            Date date = result.getDate("ALDER");
+            String tlfNo = result.getString("TLFNO");
+            returnArray.add(new Medlem(id, navn, date.toLocalDate(), tlfNo));
+           }
+           return returnArray;
+           
+        }
+        catch (Exception e) {
+            System.out.println("Fejl i visMedlemmer: " + e.getMessage());
+            return null;
+        }
+    }
+  
 }
