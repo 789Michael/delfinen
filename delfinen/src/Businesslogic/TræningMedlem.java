@@ -2,6 +2,10 @@ package Businesslogic;
 
 import java.time.LocalDate;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public class TræningMedlem extends Medlem {
     private int træningBryst;
@@ -93,7 +97,13 @@ public class TræningMedlem extends Medlem {
 
     @Override
     public String toString() {
-        return "Tr\u00e6ningMedlem{" + "tr\u00e6ningBryst=" + træningBryst + ", brystDato=" + brystDato + ", tr\u00e6ningBfly=" + træningBfly + ", bfDato=" + bfDato + ", tr\u00e6ningCrawl=" + træningCrawl + ", crawlDato=" + crawlDato + ", tr\u00e6ningRcrawl=" + træningRcrawl + ", rcDato=" + rcDato + '}';
+
+        return "Bedste tider (Træning)|| " + "Bryst: " + træningBryst + " - " + brystDato + "| Butterfly:" + træningBfly + " - " + 
+                bfDato + "| Crawl" + træningCrawl + " - " + crawlDato + "Rygcrawl" + træningRcrawl + " - " + rcDato + "|";
+
+        
+        //return "Tr\u00e6ningMedlem{" + "tr\u00e6ningBryst=" + træningBryst + ", brystDato=" + brystDato + ", tr\u00e6ningBfly=" + træningBfly + ", bfDato=" + bfDato + ", tr\u00e6ningCrawl=" + træningCrawl + ", crawlDato=" + crawlDato + ", tr\u00e6ningRcrawl=" + træningRcrawl + ", rcDato=" + rcDato + '}';
+
     }
     
     

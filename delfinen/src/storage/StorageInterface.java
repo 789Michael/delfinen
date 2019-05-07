@@ -5,6 +5,10 @@ import Businesslogic.Medlem;
 import Businesslogic.TræningMedlem;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public interface StorageInterface {
     
@@ -14,7 +18,6 @@ public interface StorageInterface {
     
     public ArrayList<Medlem> visMedlemmer();
     
-    
     public void ændreMedlemsAktivitet(int id);
     
     public ArrayList<Medlem> getRestancer();
@@ -23,8 +26,12 @@ public interface StorageInterface {
     
     public Medlem getMedlemMedId(int id);
     
-    public ArrayList<TræningMedlem> visTop5();
+    public void opdaterKonkurrenceTider(KonMedlem konmedlem);
+    
     public void opdaterTræningsTider(TræningMedlem træningMedlem);
     
+
+    public ArrayList<TræningMedlem> visTop5(String a, String dato);
+
     
 }

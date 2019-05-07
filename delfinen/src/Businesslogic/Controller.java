@@ -1,9 +1,14 @@
 package Businesslogic;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import presentation.UI;
 import storage.StorageInterface;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public class Controller {
     
@@ -94,7 +99,7 @@ public class Controller {
             String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
-                    visRestancer();
+                    visTop5();
                     break;
                 case "2":
                     opdaterKontigent();
@@ -134,6 +139,7 @@ public class Controller {
     }
 
     private void administrerTræningOgKonkurrencer() {
+
     boolean quit = false;
         do{
             ui.printAdministrerTræningOgKonkurrencer();
@@ -146,9 +152,12 @@ public class Controller {
                     opdaterKonkurrenceTider();
                     break;
                 case "3":
-                    administrerTræningOgKonkurrencer();
+                    visTop5();
                     break;
                 case "9":
+                    quit = true;
+                    break;
+                case "-1":
                     quit = true;
                     break;
                 default:
@@ -158,13 +167,41 @@ public class Controller {
         }
         while (!quit);
         
+  
+        } 
+     private void visTop5(){
+         boolean quit = false;
+            do{
+            ui.visTop5Disciplin();
+            String brugerinput = ui.scanInputMenu();
+            switch(brugerinput) {
+                case "1":
+                    storage.visTop5("BRYST", "BRYSTDATO");
+                    break;
+                case "2":
+                    storage.visTop5("BFLY", "BFDATO");
+                    break;
+                case "3":
+                    storage.visTop5("CRAWL",  "CRAWLDATO");
+                    break;
+                case "4":
+                    storage.visTop5("RCRAWL", "RCRAWLDATO");
+                    break;
+                case "-1":
+                    quit = true;
+                    break;
+            }  
+        } while(!quit);
+  
+        } 
+
    
-        }
+        
 
     private void opdaterTræningsTider() {
             ui.visMedlemmer(storage.visMedlemmer());
-            int i = ui.hvilketMedlemÆndre();
-            storage.opdaterTræningsTider(i);
+            //int i = ui.hvilketMedlemÆndre();
+            //storage.opdaterTræningsTider(i);
     }
 
     private void opdaterKonkurrenceTider() {

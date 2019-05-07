@@ -10,13 +10,14 @@ import java.util.*;
 
 /**
  *
- * @author wosch
+ * @author Allan, Aske, Casper og Malthe
  */
+
 public class MockStorage implements StorageInterface {
     
     ArrayList<Medlem> medlemmer = new ArrayList();
     
-    // FIX ME
+    
     public MockStorage() {
         medlemmer.add(new Medlem(1, "Palle", LocalDate.of(2005, 3, 12), "12345678", true, LocalDate.of(2019, 3, 12)));
         medlemmer.add(new Medlem(2, "Peter", LocalDate.of(2001, 3, 12), "12345678", true, LocalDate.of(2019, 1, 1)));
@@ -73,11 +74,6 @@ public class MockStorage implements StorageInterface {
         return returnArray;
     }
 
-    @Override
-    public ArrayList<TræningMedlem> visTop5() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     
     private int calculateDifference(LocalDate kontigentsDato, LocalDate currentDate) {
         if ((kontigentsDato != null) && (currentDate != null)) {
@@ -106,6 +102,7 @@ public class MockStorage implements StorageInterface {
         return null;
     }
 
+
     
 
     @Override
@@ -113,8 +110,18 @@ public class MockStorage implements StorageInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
+
+    @Override
+    public ArrayList<TræningMedlem> visTop5(String a, String dato) {
+
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public void opdaterKonkurrenceTider(KonMedlem konmedlem) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 }

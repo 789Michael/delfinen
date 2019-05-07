@@ -5,6 +5,10 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public interface UI {
 
@@ -39,5 +43,7 @@ public interface UI {
     public int opdaterKontigentsDato();
     
     public void kontigentKvitering(int pris);
+    
+    public int visTop5Disciplin();
 
 }
