@@ -13,7 +13,6 @@ public interface StorageInterface {
     
     public ArrayList<Medlem> visMedlemmer();
     
-    
     public void ændreMedlemsAktivitet(int id);
     
     public ArrayList<Medlem> getRestancer();
@@ -22,7 +21,6 @@ public interface StorageInterface {
     
     public Medlem getMedlemMedId(int id);
     
-    public ArrayList<TræningMedlem> visTop5();
-    
+    public ArrayList<TræningMedlem> visTop5(String a, String dato);
     
 }

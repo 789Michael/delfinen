@@ -177,5 +177,16 @@ public class SystemUI implements UI {
         System.out.println("Prisen for kontigent fornyelse er: " + pris + "DKK. bekræft betaling med 1");
         scan.nextLine();
     }
+    
+    @Override
+    public int visTop5Disciplin(){
+        System.out.println("1. Brystsvømning");
+        System.out.println("2. Butterfly");
+        System.out.println("3. Crawl");
+        System.out.println("4. Rygcrawl");
+        int i = scan.nextInt();
+        scan.nextLine();
+        return i;
+    }
 }
     

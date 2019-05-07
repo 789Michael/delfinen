@@ -150,12 +150,13 @@ public class DatabaseConnection implements StorageInterface {
     }
 
     @Override
-    public ArrayList<TræningMedlem> visTop5() {
+    public ArrayList<TræningMedlem> visTop5(String a, String dato) {
         try {
         Connection connection = makeConnection();
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT * FROM MEDLEM inner join træningstider on medlem.id=træningstider.id where brystdato is not null order by bryst limit 5;");
-           
+         
+        ResultSet result = statement.executeQuery("SELECT * FROM MEDLEM inner join træningstider on medlem.id=træningstider.id where " + dato + " is not null order by " + a + " limit 5;");
+                      
         ArrayList<TræningMedlem> returnArray = new ArrayList();
            
         while (result.next()) {
@@ -171,6 +172,7 @@ public class DatabaseConnection implements StorageInterface {
             Date crawlDato = result.getDate("CRAWLDATO");
             int træningRcrawl = result.getInt("RCRAWL");
             Date rcDato = result.getDate("RCRAWLDATO");
+            
             returnArray.add(new TræningMedlem(id, navn, date.toLocalDate(), tlfNo, træningBryst, brystDato.toLocalDate(), træningBfly, bfDato.toLocalDate(), træningCrawl, crawlDato.toLocalDate(), træningRcrawl, rcDato.toLocalDate()));
            }
            return returnArray;
@@ -193,11 +195,11 @@ public class DatabaseConnection implements StorageInterface {
                 }
         public void opdaterKonkurrenceTider(){
         */    
-        }
+
         
         
         
-        
+}    
     
 
 

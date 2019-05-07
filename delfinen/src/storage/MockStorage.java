@@ -72,11 +72,6 @@ public class MockStorage implements StorageInterface {
         return returnArray;
     }
 
-    @Override
-    public ArrayList<TræningMedlem> visTop5() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     
     private int calculateDifference(LocalDate kontigentsDato, LocalDate currentDate) {
         if ((kontigentsDato != null) && (currentDate != null)) {
@@ -103,5 +98,11 @@ public class MockStorage implements StorageInterface {
             }
         }
         return null;
+    }
+
+
+    @Override
+    public ArrayList<TræningMedlem> visTop5(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
