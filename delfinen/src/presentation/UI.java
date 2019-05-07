@@ -43,5 +43,7 @@ public interface UI {
     public int opdaterKontigentsDato();
     
     public void kontigentKvitering(int pris);
+    
+    public int visTop5Disciplin();
 
 }

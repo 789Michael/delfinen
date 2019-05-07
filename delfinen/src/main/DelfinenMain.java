@@ -21,7 +21,7 @@ public class DelfinenMain {
         Medlem medlem = new Medlem(01, "Måge Lister", localDate, "12345678");
         
         DatabaseConnection database = new DatabaseConnection();
-        //database.opretMedlem(medlem);
+        //database.opretMedlem(medlem);3
         
         //database.fjernMedlem(11);
         ArrayList<Medlem> testArray = new ArrayList();
