@@ -16,6 +16,7 @@ import java.util.ArrayList;
  *
  * @author Allan, Aske, Casper og Malthe
  */
+
 public class DatabaseConnection implements StorageInterface {
     
     private Connection makeConnection() throws Exception {

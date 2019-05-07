@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
+
 public class SystemUI implements UI {
     
     Scanner scan = new Scanner(System.in);

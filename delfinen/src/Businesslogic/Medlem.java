@@ -5,6 +5,10 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public class Medlem {
     

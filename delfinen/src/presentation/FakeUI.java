@@ -4,6 +4,10 @@ import Businesslogic.Medlem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public class FakeUI implements UI {
 

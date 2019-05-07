@@ -4,8 +4,9 @@ import java.time.LocalDate;
 
 /**
  *
- * @author wosch
+ * @author Allan, Aske, Casper og Malthe
  */
+
 public class KonMedlem extends Medlem {
     private int sID;
     private String sNavn;
