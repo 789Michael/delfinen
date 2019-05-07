@@ -14,9 +14,9 @@ public interface UI {
 
     public int tlfNo();
     
-    public int fjernMedlem();
+    public int fjernMedlem(ArrayList<Integer> ids);
     
-    public void visMedlemmer(ArrayList<Medlem> medlemmer);
+    public void visMedlemmer(ArrayList<Medlem> medlemmer, boolean bypassRS);
     
     public void printHovedmenu();
     
@@ -32,12 +32,16 @@ public interface UI {
    
     public boolean aktivMedlem();
     
-    public int ændreMedlemsAktivitet();
+    public int ændreMedlemsAktivitet(ArrayList<Integer> ids);
     
     public void visRestancer(ArrayList<Medlem> medlemmer);
     
-    public int opdaterKontigentsDato();
+    public int opdaterKontigentsDato(ArrayList<Integer> ids);
     
-    public void kontigentKvitering(int pris);
+    public int kontigentKvitering(int pris, Medlem m);
+    
+    public void printString(String s);
+    
+    public void flushConsole();
 
 }

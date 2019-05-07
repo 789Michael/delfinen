@@ -49,7 +49,7 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public int fjernMedlem() {
+    public int fjernMedlem(ArrayList<Integer> ids) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -64,7 +64,7 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public void visMedlemmer(ArrayList<Medlem> medlemmer) {
+    public void visMedlemmer(ArrayList<Medlem> medlemmer, boolean bypassRS) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -74,7 +74,7 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public int ændreMedlemsAktivitet() {
+    public int ændreMedlemsAktivitet(ArrayList<Integer> ids) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -84,12 +84,22 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public int opdaterKontigentsDato() {
+    public int opdaterKontigentsDato(ArrayList<Integer> ids) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void kontigentKvitering(int pris) {
+    public int kontigentKvitering(int pris, Medlem m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void printString(String s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void flushConsole() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

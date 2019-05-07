@@ -89,7 +89,6 @@ public class DatabaseConnection implements StorageInterface {
     @Override
     public void ændreMedlemsAktivitet(int id) {
         try {
-            System.out.println("test1");
            Connection connection = makeConnection();
            Statement statement = connection.createStatement();
            statement.executeUpdate("UPDATE medlem SET AKTIV = " + ((getMedlemMedId(id).isAktivMedlem()) ? 0 : 1)  + " WHERE ID = " + id + ";");
@@ -194,6 +193,44 @@ public class DatabaseConnection implements StorageInterface {
         public void opdaterKonkurrenceTider(){
             
         }
+        
+        @Override
+        public int højesteMedlemsId() {
+            
+            try {
+                Connection connection = makeConnection();
+                Statement statement = connection.createStatement();
+                ResultSet result = statement.executeQuery("SELECT MAX(ID) FROM medlem;");
+                result.next();
+                return result.getInt(1);
+            }
+            catch(Exception e) {
+                System.out.println("maxOrdreNummer - " + e.getMessage());
+                return -1;
+            }
+                    
+        }
+
+    @Override
+    public ArrayList<Integer> getIDs() {
+        try {
+           Connection connection = makeConnection();
+           Statement statement = connection.createStatement();
+           ResultSet result = statement.executeQuery("SELECT ID FROM medlem");
+           
+           ArrayList<Integer> returnArray = new ArrayList();
+           
+           while (result.next()) {
+              returnArray.add(result.getInt("ID"));
+           }
+           return returnArray;
+           
+        }
+        catch (Exception e) {
+            System.out.println("Fejl i visMedlemmer: " + e.getMessage());
+            return null;
+        }
+    }
 }
         
         

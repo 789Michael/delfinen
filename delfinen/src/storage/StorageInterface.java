@@ -24,5 +24,10 @@ public interface StorageInterface {
     
     public ArrayList<TræningMedlem> visTop5();
     
+    public int højesteMedlemsId();
+    
+    public ArrayList<Integer> getIDs();
+    
+    
     
 }
