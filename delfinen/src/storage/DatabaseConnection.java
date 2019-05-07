@@ -1,5 +1,6 @@
 package storage;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
 import Businesslogic.TræningMedlem;
 import java.sql.Connection;
@@ -181,7 +182,8 @@ public class DatabaseConnection implements StorageInterface {
             return null;
         }
     }
-        public void opdaterTræningsTider(TræningMedlem træningMedlem){
+            @Override
+            public void opdaterTræningsTider(TræningMedlem træningmedlem){
             try {
             Connection connection = makeConnection();
             Statement statement = connection.createStatement();
@@ -191,7 +193,17 @@ public class DatabaseConnection implements StorageInterface {
                         System.out.println("Fejl i Opdater Træningstider: " + e.getMessage());
                     }
                 }
-        public void opdaterKonkurrenceTider(){
+            @Override
+            public void opdaterKonkurrenceTider(KonMedlem konmedlem){
+            
+            try { 
+                Connection connection = makeConnection();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate("INSERT INTO resultater (SID, ID, BRYST, BPLADS, BFLY, BFPLADS, CRAWL, CPLADS, RCRAWL, RCPLADS) VALUES (" + konmedlem.getsID()+"," + konmedlem.getId()+","+konmedlem.getBryst() + "," + konmedlem.getbPlads()+"," + konmedlem.getBfly()+ "," + konmedlem.getBfPlads()+ ","+ konmedlem.getCrawl()+ konmedlem.getcPlads()+ "," + konmedlem.getRcrawl()+ "," + konmedlem.getRcPlads());
+            }
+            catch (Exception e) {
+                System.out.println("Fejl i opdater konkurrencetider: " + e.getMessage());
+            }
             
         }
 }

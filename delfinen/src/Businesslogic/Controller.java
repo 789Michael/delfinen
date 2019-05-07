@@ -27,7 +27,7 @@ public class Controller {
                     administrerKontingenter();
                     break;
                 case "3":
-                    visRestancer();
+                    administrerTræningOgKonkurrencer();
                     break;
                 case "9":
                     quit = true;
@@ -134,9 +134,40 @@ public class Controller {
     }
 
     private void administrerTræningOgKonkurrencer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    boolean quit = false;
+        do{
+            ui.printAdministrerTræningOgKonkurrencer();
+            String brugerinput = ui.scanInputMenu();
+            switch(brugerinput) {
+                case "1":
+                    opdaterTræningsTider();
+                    break;
+                case "2":
+                    opdaterKonkurrenceTider();
+                    break;
+                case "3":
+                    administrerTræningOgKonkurrencer();
+                    break;
+                case "9":
+                    quit = true;
+                    break;
+                default:
+                    ui.notAnOption();
     }
+            
+        }
+        while (!quit);
+        
    
-   
+        }
+
+    private void opdaterTræningsTider() {
+            ui.visMedlemmer(storage.visMedlemmer());
+            int i = ui.hvilketMedlemÆndre();
+            storage.opdaterTræningsTider(i);
+    }
+
+    private void opdaterKonkurrenceTider() {
+    }
 }
 

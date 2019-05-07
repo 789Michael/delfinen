@@ -1,5 +1,6 @@
 package storage;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
 import Businesslogic.TræningMedlem;
 import java.time.LocalDate;
@@ -103,5 +104,17 @@ public class MockStorage implements StorageInterface {
             }
         }
         return null;
+    }
+
+    
+
+    @Override
+    public void opdaterTræningsTider(TræningMedlem træningmedlem) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void opdaterKonkurrenceTider(KonMedlem konmedlem) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

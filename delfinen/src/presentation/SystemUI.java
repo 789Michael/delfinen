@@ -177,5 +177,14 @@ public class SystemUI implements UI {
         System.out.println("Prisen for kontigent fornyelse er: " + pris + "DKK. bekræft betaling med 1");
         scan.nextLine();
     }
+
+    @Override
+    public int hvilketMedlemÆndre() {
+        
+        System.out.println("Indtast ID på hvilket medlem vil du oprette træningstider for?");
+        int i = scan.nextInt();
+        scan.nextLine();
+        return i;
+    }
 }
     
