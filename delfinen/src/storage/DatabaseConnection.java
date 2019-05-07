@@ -154,7 +154,7 @@ public class DatabaseConnection implements StorageInterface {
         try {
         Connection connection = makeConnection();
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT * FROM medlem");
+        ResultSet result = statement.executeQuery("SELECT * FROM MEDLEM inner join træningstider on medlem.id=træningstider.id where brystdato is not null order by bryst limit 5;");
            
         ArrayList<TræningMedlem> returnArray = new ArrayList();
            
