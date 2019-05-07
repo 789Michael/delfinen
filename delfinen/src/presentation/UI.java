@@ -5,6 +5,10 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public interface UI {
 

@@ -2,6 +2,10 @@ package Businesslogic;
 
 import java.time.LocalDate;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public class TræningMedlem extends Medlem {
     private int træningBryst;

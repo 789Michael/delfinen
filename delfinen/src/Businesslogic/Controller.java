@@ -5,6 +5,10 @@ import java.util.Scanner;
 import presentation.UI;
 import storage.StorageInterface;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public class Controller {
     

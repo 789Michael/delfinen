@@ -4,6 +4,10 @@ import Businesslogic.Medlem;
 import Businesslogic.TræningMedlem;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public interface StorageInterface {
     
