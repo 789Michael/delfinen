@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
+
 public class SystemUI implements UI {
     
     Scanner scan = new Scanner(System.in);
@@ -282,5 +287,30 @@ public class SystemUI implements UI {
     public void printString(String s) {
         System.out.println(s);
     }
+
+
+    public int hvilketMedlemÆndre() {
+        
+        System.out.println("Indtast ID på hvilket medlem vil du oprette træningstider for?");
+
+    
+    
+    /*public int visTop5Disciplin(){
+        System.out.println("1. Brystsvømning");
+        System.out.println("2. Butterfly");
+        System.out.println("3. Crawl");
+        System.out.println("4. Rygcrawl");
+
+        int i = scan.nextInt();
+        scan.nextLine();
+        return i;*/
+    return 0;
+    }
+
+    @Override
+    public int visTop5Disciplin() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
     

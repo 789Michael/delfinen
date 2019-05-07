@@ -1,9 +1,14 @@
 package Businesslogic;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import presentation.UI;
 import storage.StorageInterface;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public class Controller {
     
@@ -29,7 +34,7 @@ public class Controller {
                     administrerKontingenter();
                     break;
                 case "3":
-                    visRestancer();
+                    administrerTræningOgKonkurrencer();
                     break;
                 case "9":
                     quit = true;
@@ -114,7 +119,7 @@ public class Controller {
             String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
-                    visRestancer();
+                    visTop5();
                     break;
                 case "2":
                     opdaterKontigent();
@@ -161,9 +166,72 @@ public class Controller {
     }
 
     private void administrerTræningOgKonkurrencer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    boolean quit = false;
+        do{
+            ui.printAdministrerTræningOgKonkurrencer();
+            String brugerinput = ui.scanInputMenu();
+            switch(brugerinput) {
+                case "1":
+                    opdaterTræningsTider();
+                    break;
+                case "2":
+                    opdaterKonkurrenceTider();
+                    break;
+                case "3":
+                    visTop5();
+                    break;
+                case "9":
+                    quit = true;
+                    break;
+                case "-1":
+                    quit = true;
+                    break;
+                default:
+                    ui.notAnOption();
     }
+            
+        }
+        while (!quit);
+        
+  
+        } 
+     private void visTop5(){
+         boolean quit = false;
+            do{
+            ui.visTop5Disciplin();
+            String brugerinput = ui.scanInputMenu();
+            switch(brugerinput) {
+                case "1":
+                    storage.visTop5("BRYST", "BRYSTDATO");
+                    break;
+                case "2":
+                    storage.visTop5("BFLY", "BFDATO");
+                    break;
+                case "3":
+                    storage.visTop5("CRAWL",  "CRAWLDATO");
+                    break;
+                case "4":
+                    storage.visTop5("RCRAWL", "RCRAWLDATO");
+                    break;
+                case "-1":
+                    quit = true;
+                    break;
+            }  
+        } while(!quit);
+  
+        } 
+
    
-   
+        
+
+    private void opdaterTræningsTider() {
+            ui.visMedlemmer(storage.visMedlemmer(), true);
+            //int i = ui.hvilketMedlemÆndre();
+            //storage.opdaterTræningsTider(i);
+    }
+
+    private void opdaterKonkurrenceTider() {
+    }
 }
 

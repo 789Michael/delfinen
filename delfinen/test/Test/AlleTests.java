@@ -10,6 +10,11 @@ import static org.junit.Assert.*;
 import presentation.FakeUI;
 import storage.MockStorage;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
+
 public class AlleTests {
     
     MockStorage storage = new MockStorage();

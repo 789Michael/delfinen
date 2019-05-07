@@ -4,6 +4,10 @@ import Businesslogic.Medlem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Allan, Aske, Casper og Malthe
+ */
 
 public class FakeUI implements UI {
 
@@ -102,6 +106,14 @@ public class FakeUI implements UI {
     public void flushConsole() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public int visTop5Disciplin() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
 
     
     

@@ -1,5 +1,6 @@
 package storage;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
 import Businesslogic.TræningMedlem;
 import java.sql.Connection;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  *
  * @author Allan, Aske, Casper og Malthe
  */
+
 public class DatabaseConnection implements StorageInterface {
     
     private Connection makeConnection() throws Exception {
@@ -149,12 +151,13 @@ public class DatabaseConnection implements StorageInterface {
     }
 
     @Override
-    public ArrayList<TræningMedlem> visTop5() {
+    public ArrayList<TræningMedlem> visTop5(String a, String dato) {
         try {
         Connection connection = makeConnection();
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT * FROM MEDLEM inner join træningstider on medlem.id=træningstider.id where brystdato is not null order by bryst limit 5;");
-           
+         
+        ResultSet result = statement.executeQuery("SELECT * FROM MEDLEM inner join træningstider on medlem.id=træningstider.id where " + dato + " is not null order by " + a + " limit 5;");
+                      
         ArrayList<TræningMedlem> returnArray = new ArrayList();
            
         while (result.next()) {
@@ -170,6 +173,7 @@ public class DatabaseConnection implements StorageInterface {
             Date crawlDato = result.getDate("CRAWLDATO");
             int træningRcrawl = result.getInt("RCRAWL");
             Date rcDato = result.getDate("RCRAWLDATO");
+            
             returnArray.add(new TræningMedlem(id, navn, date.toLocalDate(), tlfNo, træningBryst, brystDato.toLocalDate(), træningBfly, bfDato.toLocalDate(), træningCrawl, crawlDato.toLocalDate(), træningRcrawl, rcDato.toLocalDate()));
            }
            return returnArray;
@@ -180,17 +184,29 @@ public class DatabaseConnection implements StorageInterface {
             return null;
         }
     }
-        public void opdaterTræningsTider(TræningMedlem træningMedlem){
+            @Override
+            public void opdaterTræningsTider(TræningMedlem træningmedlem){
             try {
             Connection connection = makeConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES (" + træningMedlem.getId()+ "," + træningMedlem.getTræningBryst()+ ",'" + træningMedlem.getBrystDato() + "'," + træningMedlem.getTræningBfly()+ ",'"+ træningMedlem.getBfDato()+ "',"+ træningMedlem.getTræningCrawl()+ ",'"+ træningMedlem.getCrawlDato()+"',"+træningMedlem.getTræningRcrawl()+ ",'"+ træningMedlem.getRcDato()+"'");
+            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES (" + træningmedlem.getId()+ "," + træningmedlem.getTræningBryst()+ ",'" + træningmedlem.getBrystDato() + "'," + træningmedlem.getTræningBfly()+ ",'"+ træningmedlem.getBfDato()+ "',"+ træningmedlem.getTræningCrawl()+ ",'"+ træningmedlem.getCrawlDato()+"',"+træningmedlem.getTræningRcrawl()+ ",'"+ træningmedlem.getRcDato()+"'");
                     }
                     catch (Exception e){
                         System.out.println("Fejl i Opdater Træningstider: " + e.getMessage());
                     }
                 }
-        public void opdaterKonkurrenceTider(){
+
+            @Override
+            public void opdaterKonkurrenceTider(KonMedlem konmedlem){
+            
+            try { 
+                Connection connection = makeConnection();
+                Statement statement = connection.createStatement();
+                //statement.executeUpdate("INSERT INTO resultater (SID, ID, BRYST, BPLADS, BFLY, BFPLADS, CRAWL, CPLADS, RCRAWL, RCPLADS) VALUES (" + konmedlem.getsID()+"," + konmedlem.getId()+","+konmedlem.getBryst() + "," + konmedlem.getbPlads()+"," + konmedlem.getBfly()+ "," + konmedlem.getBfPlads()+ ","+ konmedlem.getCrawl()+ konmedlem.getcPlads()+ "," + konmedlem.getRcrawl()+ "," + konmedlem.getRcPlads());
+            }
+            catch (Exception e) {
+                System.out.println("Fejl i opdater konkurrencetider: " + e.getMessage());
+            }
             
         }
         
@@ -232,11 +248,3 @@ public class DatabaseConnection implements StorageInterface {
         }
     }
 }
-        
-        
-        
-        
-    
-
-
-
