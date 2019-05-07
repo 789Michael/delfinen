@@ -182,19 +182,20 @@ public class DatabaseConnection implements StorageInterface {
             return null;
         }
     }
-        /*public void opdaterTræningsTider(TræningMedlem træningMedlem){
+        public void opdaterTræningsTider(TræningMedlem træningMedlem){
             try {
             Connection connection = makeConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES ('" + træningMedlem.getId())
+            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES (" + træningMedlem.getId()+ "," + træningMedlem.getTræningBryst()+ ",'" + træningMedlem.getBrystDato() + "'," + træningMedlem.getTræningBfly()+ ",'"+ træningMedlem.getBfDato()+ "',"+ træningMedlem.getTræningCrawl()+ ",'"+ træningMedlem.getCrawlDato()+"',"+træningMedlem.getTræningRcrawl()+ ",'"+ træningMedlem.getRcDato()+"'");
                     }
                     catch (Exception e){
                         System.out.println("Fejl i Opdater Træningstider: " + e.getMessage());
                     }
                 }
         public void opdaterKonkurrenceTider(){
-        */    
+            
         }
+}
         
         
         
