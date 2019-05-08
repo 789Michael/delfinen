@@ -18,7 +18,7 @@ public class TræningMedlem extends Medlem {
     private LocalDate rcDato;
   
     
-    public TræningMedlem(int id, String navn, LocalDate alder, String tlfNo, int træningBryst, LocalDate brystDato, int træningBfly, LocalDate bfDato, int træningCrawl, LocalDate crawlDato, int træningRcrawl, LocalDate rcDato) {
+    public TræningMedlem(int id, String navn, LocalDate alder, String tlfNo, boolean aktivMedlem, int træningBryst, LocalDate brystDato, int træningBfly, LocalDate bfDato, int træningCrawl, LocalDate crawlDato, int træningRcrawl, LocalDate rcDato) {
         super(id, navn, alder, tlfNo, true);
         this.træningBryst = træningBryst;
         this.træningBfly = træningBfly;
@@ -97,7 +97,6 @@ public class TræningMedlem extends Medlem {
 
     @Override
     public String toString() {
-        String s;
         return "Tr\u00e6ningMedlem{" + "tr\u00e6ningBryst=" + træningBryst + ", brystDato=" + brystDato + ", tr\u00e6ningBfly=" + træningBfly + ", bfDato=" + bfDato + ", tr\u00e6ningCrawl=" + træningCrawl + ", crawlDato=" + crawlDato + ", tr\u00e6ningRcrawl=" + træningRcrawl + ", rcDato=" + rcDato + '}';
     }
     

@@ -1,6 +1,7 @@
 package presentation;
 
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -184,14 +185,18 @@ public class SystemUI implements UI {
     }
     
     @Override
-    public int visTop5Disciplin(){
+    public void visTop5Disciplin(ArrayList<TræningMedlem> tm){
+        for (TræningMedlem t : tm){
+            System.out.println(t.toString());
+        }
         System.out.println("1. Brystsvømning");
         System.out.println("2. Butterfly");
         System.out.println("3. Crawl");
         System.out.println("4. Rygcrawl");
-        int i = scan.nextInt();
         scan.nextLine();
-        return i;
+        
+        
+                
     }
 }
     

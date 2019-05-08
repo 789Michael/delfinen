@@ -99,7 +99,7 @@ public class Controller {
             String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
-                    visTop5();
+                    visRestancer();
                     break;
                 case "2":
                     opdaterKontigent();
@@ -163,7 +163,6 @@ public class Controller {
      private void visTop5(){
          boolean quit = false;
             do{
-            ui.visTop5Disciplin();
             String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
@@ -183,7 +182,7 @@ public class Controller {
                     break;
             }  
         } while(!quit);
-  
+         
         } 
    
    

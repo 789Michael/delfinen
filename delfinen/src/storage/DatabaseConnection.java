@@ -155,16 +155,17 @@ public class DatabaseConnection implements StorageInterface {
         try {
         Connection connection = makeConnection();
         Statement statement = connection.createStatement();
-         
+            System.out.println(a +" " + dato);
         ResultSet result = statement.executeQuery("SELECT * FROM MEDLEM inner join træningstider on medlem.id=træningstider.id where " + dato + " is not null order by " + a + " limit 5;");
                       
         ArrayList<TræningMedlem> returnArray = new ArrayList();
-           
+
         while (result.next()) {
             int id = result.getInt("ID");
             String navn = result.getString("MNAME");
             Date date = result.getDate("ALDER");
             String tlfNo = result.getString("TLFNO");
+            Boolean aktivMedlem = result.getBoolean("AKTIV");
             int træningBryst = result.getInt("BRYST");
             Date brystDato = result.getDate("BRYSTDATO");
             int træningBfly = result.getInt("BFLY");
@@ -173,14 +174,14 @@ public class DatabaseConnection implements StorageInterface {
             Date crawlDato = result.getDate("CRAWLDATO");
             int træningRcrawl = result.getInt("RCRAWL");
             Date rcDato = result.getDate("RCRAWLDATO");
-            
-            returnArray.add(new TræningMedlem(id, navn, date.toLocalDate(), tlfNo, træningBryst, brystDato.toLocalDate(), træningBfly, bfDato.toLocalDate(), træningCrawl, crawlDato.toLocalDate(), træningRcrawl, rcDato.toLocalDate()));
-           }
+            returnArray.add(new TræningMedlem(id, navn, date.toLocalDate(), tlfNo, aktivMedlem,  træningBryst, brystDato.toLocalDate(), træningBfly, bfDato.toLocalDate(), træningCrawl, crawlDato.toLocalDate(), træningRcrawl, rcDato.toLocalDate()));
+            System.out.println(returnArray.get(1).getBrystDato());
+        }
            return returnArray;
            
         }
         catch (Exception e) {
-            System.out.println("Fejl i visMedlemmer: " + e.getMessage());
+            System.out.println("Fejl i TræningMedlem: " + e.getMessage());
             return null;
         }
     }

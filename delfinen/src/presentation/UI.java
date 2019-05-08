@@ -1,6 +1,7 @@
 package presentation;
 
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -44,6 +45,6 @@ public interface UI {
     
     public void kontigentKvitering(int pris);
     
-    public int visTop5Disciplin();
+    public void visTop5Disciplin(ArrayList<TræningMedlem> tm);
 
 }

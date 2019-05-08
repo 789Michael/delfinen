@@ -1,6 +1,7 @@
 package presentation;
 
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -98,9 +99,10 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public int visTop5Disciplin() {
+    public void visTop5Disciplin(ArrayList<TræningMedlem> tm) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
     
     

@@ -19,7 +19,7 @@ public class Medlem {
     private boolean aktivMedlem;
     private LocalDate kontigentsDato;
     
-    public Medlem (int id, String navn, LocalDate alder, String tlfNo, Boolean aktivMedlem) {
+    public Medlem (int id, String navn, LocalDate alder, String tlfNo, boolean aktivMedlem) {
         this.id = id;
         this.navn = navn;
         this.alder = alder;
