@@ -58,8 +58,4 @@ public class AlleTests {
         storage.getMedlemMedId(2).setAktivMedlem(false);
         assertTrue(storage.getMedlemMedId(2).isAktivMedlem()==false);
     }
-    @Test
-    public void testOpdaterRestance(){
-        
-    }
 }

@@ -51,8 +51,8 @@ public class SystemUI implements UI {
         System.out.println("Vælg en af følgende muligheder:");
         System.out.println("1. Opdater trænings tider");
         System.out.println("2. Indsæt Konkurrence tider");
-        System.out.println("3. Vis 5 Svømmere");
-        System.out.println("4. Vis Stævne resultater");
+        System.out.println("3. Vis Top 5 Svømmere");
+        System.out.println("4. Vis Stævne Resultater");
         System.out.println("-1. Gå tilbage");
     }
 
