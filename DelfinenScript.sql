@@ -71,13 +71,21 @@ insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (3, 145, "2012-04-13", 210, "2010-11-02", 47, "2017-07-18", 74, "2013-01-01");
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (4, 42, "2012-04-13", 420, "2010-11-02", 10, "2001-05-13", 71, "2016-05-24");
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (5, 67, "2012-04-13", 234, "2010-11-02", 29, "2017-07-18", 72, "2016-05-24");
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (6, 87, "2012-04-13", 278, "2010-11-02", 31, "2017-07-18", 68, "2016-05-24");
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (7, 98, "2012-04-13", 335, "2010-11-02", 135, "2017-07-18", 201, "2017-05-21");
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (8, 65, "2012-04-13", 336, "2010-11-02", 153, "2017-07-18", 188, "2016-05-24");
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (9, 146, "2012-04-13", 431, "2010-11-02", 147, "2017-07-18", 174, "2013-01-01");
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (10, 142, "2012-04-13", 420, "2010-11-02", 110, "2001-05-13", 171, "2016-05-24");
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (11, 267, "2012-04-13", 365, "2010-11-02", 219, "2017-07-18", 172, "2016-05-24");
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (12, 387, "2012-04-13", 398, "2010-11-02", 311, "2017-07-18", 168, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (6, 87, "2012-04-13", 278, "2010-11-02", 311, "2017-07-18", 681, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (7, 98, "2012-04-13", 335, "2010-11-02", 1135, "2017-07-18", 2011, "2017-05-21");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (8, 65, "2012-04-13", 336, "2010-11-02", 1153, "2017-07-18", 1881, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (9, 1461, "2012-04-13", 4131, "2010-11-02", 1471, "2017-07-18", 1174, "2013-01-01");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (10, 1421, "2012-04-13", 4120, "2010-11-02", 1110, "2001-05-13", 1171, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (11, 2671, "2012-04-13", 3615, "2010-11-02", 2119, "2017-07-18", 1712, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (12, 3871, "2012-04-13", 3981, "2010-11-02", 1311, "2017-07-18", 1681, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (13, 981, "2012-04-13", 1335, "2010-11-02", 1135, "2017-07-18", 2011, "2017-05-21");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (14, 6115, "2012-04-13", 1336, "2010-11-02", 1531, "2017-07-18", 1881, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (15, 14611, "2012-04-13", 1431, "2010-11-02", 1471, "2017-07-18", 1741, "2013-01-01");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (16, 14211, "2012-04-13", 4120, "2010-11-02", 1101, "2001-05-13", 1711, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (17, 26117, "2012-04-13", 3615, "2010-11-02", 2119, "2017-07-18", 1721, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (18, 11387, "2012-04-13", 3981, "2010-11-02", 3111, "2017-07-18", 1681, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (19, 11387, "2012-04-13", 3981, "2010-11-02", 1311, "2017-07-18", 1681, "2016-05-24");
+
 
 
 
