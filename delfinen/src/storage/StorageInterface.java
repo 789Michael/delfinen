@@ -28,12 +28,14 @@ public interface StorageInterface {
     
     public void opdaterKonkurrenceTider(KonMedlem konmedlem);
     
-    public void opdaterTræningsTider(TræningMedlem træningMedlem);
+    public void opdaterTræningsTider(TræningMedlem m);
 
     public int højesteMedlemsId();
     
     public ArrayList<Integer> getIDs();
     
     public ArrayList<TræningMedlem> visTop5(String a, String dato);
+    
+    public Medlem getTræningMedlemMedId(int id);
 
 }

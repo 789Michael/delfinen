@@ -18,16 +18,16 @@ public class TræningMedlem extends Medlem {
     private LocalDate rcDato;
   
     
-    public TræningMedlem(int id, String navn, LocalDate alder, String tlfNo, int træningBryst, LocalDate brystDato, int træningBfly, LocalDate bfDato, int træningCrawl, LocalDate crawlDato, int træningRcrawl, LocalDate rcDato) {
+    public TræningMedlem(int id, String navn, LocalDate alder, String tlfNo, int træningBryst, LocalDate træningDato, int træningBfly, int træningCrawl, int træningRcrawl) {
         super(id, navn, alder, tlfNo, true);
         this.træningBryst = træningBryst;
         this.træningBfly = træningBfly;
         this.træningCrawl = træningCrawl;
         this.træningRcrawl = træningRcrawl;
-        this.brystDato = brystDato;
-        this.bfDato = bfDato;
-        this.crawlDato = crawlDato;
-        this.rcDato = rcDato;
+        this.brystDato = træningDato;
+        this.bfDato = træningDato;
+        this.crawlDato = træningDato;
+        this.rcDato = træningDato;
         
     }
 

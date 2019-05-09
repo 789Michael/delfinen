@@ -49,4 +49,22 @@ public interface UI {
     public void flushConsole();
     
     public int visTop5Disciplin();
+    
+    public int hvilketMedlemÆndre(ArrayList <Integer> ids);
+    
+    public int vælgBrystTid();
+    
+    public LocalDate vælgTræningDato();
+    
+    public int vælgBFtid();
+    
+    
+    
+    public int vælgCrawlTid();
+    
+    
+    
+    public int vælgRCTid ();
+    
+    
 }
