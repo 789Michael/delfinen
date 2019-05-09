@@ -106,7 +106,7 @@ public class TræningMedlem extends Medlem {
     sb.append("Bedste tider (Træning)|| ");
     switch (i){
         case 1:
-            sb.append(navn + " Bryst: " + træningBryst + " sek." + " - " + brystDato);
+            sb.append(navn + " Brystsvømning: " + træningBryst + " sek." + " - " + brystDato);
             break;
         case 2:
             sb.append(navn + " Butterfly: " + træningBfly + " sek." + " - " + bfDato);
