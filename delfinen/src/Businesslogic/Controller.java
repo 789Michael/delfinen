@@ -26,9 +26,11 @@ public class Controller {
             String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
+                    ui.flushConsole();
                     administrerMedlemmer();
                     break;
                 case "2":
+                    ui.flushConsole();
                     administrerKontingenter();
                     break;
                 case "3":
@@ -38,6 +40,7 @@ public class Controller {
                     quit = true;
                     break;
                 default:
+                    ui.flushConsole();
                     ui.notAnOption();
                 
             }
@@ -64,6 +67,7 @@ public class Controller {
                     ændreMedlemsAktivitet();
                     break;
                 case "-1":
+                    ui.flushConsole();
                     quit = true;
                     break;
             }
@@ -76,20 +80,36 @@ public class Controller {
         Medlem medlem = new Medlem(-1, ui.vælgNavn(), ui.vælgFødt(), "" + ui.tlfNo(), ui.aktivMedlem());
         
         storage.opretMedlem(medlem);
+        
+        ui.flushConsole();
+        
+        ui.printString("Medlem oprettet: " + storage.getMedlemMedId(storage.højesteMedlemsId()).toString());
     }
     
     private void fjernMedlem() {
-        ui.visMedlemmer(storage.visMedlemmer());
-        storage.fjernMedlem(ui.fjernMedlem());
+        ui.visMedlemmer(storage.visMedlemmer(),true);
+        int i = ui.fjernMedlem(storage.getIDs());
+        ui.flushConsole();
+        if(i != -1){
+        Medlem medlem = storage.getMedlemMedId(i);
+        storage.fjernMedlem(medlem.getId());
+        ui.printString("Medlem Fjernet: " + medlem.toString());
+        }
     }
     
     private void visMedlemmer() {
-        ui.visMedlemmer(storage.visMedlemmer());
+        ui.visMedlemmer(storage.visMedlemmer(), false);
+        ui.flushConsole();
     }
 
     private void ændreMedlemsAktivitet(){
-        ui.visMedlemmer(storage.visMedlemmer());
-        storage.ændreMedlemsAktivitet(ui.ændreMedlemsAktivitet());
+        ui.visMedlemmer(storage.visMedlemmer(),true);
+        int id = ui.ændreMedlemsAktivitet(storage.getIDs());
+        ui.flushConsole();
+        if(id != -1){
+            storage.ændreMedlemsAktivitet(id);
+            ui.printString("Medlems Aktivitet ændret for: " + storage.getMedlemMedId(id).toString());
+        }
     }
 
     private void administrerKontingenter() {
@@ -105,6 +125,7 @@ public class Controller {
                     opdaterKontigent();
                     break;
                 case "-1":
+                    ui.flushConsole();
                     quit = true;
                     break;
             }
@@ -117,14 +138,20 @@ public class Controller {
     }
     
     private void opdaterKontigent(){
-        ui.visMedlemmer(storage.visMedlemmer());
-        int i = ui.opdaterKontigentsDato();
-        ui.kontigentKvitering(udregnKontigent(i));
-        storage.opdaterKontigentsDato(i);
+        ui.visMedlemmer(storage.visMedlemmer(),true);
+        int i = ui.opdaterKontigentsDato(storage.getIDs());
+        ui.flushConsole();
+        if(i != -1){
+            Medlem m = storage.getMedlemMedId(i);
+            if(ui.kontigentKvitering(udregnKontigent(m), m) == 1){
+                storage.opdaterKontigentsDato(m.getId());
+                ui.printString("Medlems Kontigent ændret for: " + storage.getMedlemMedId(m.getId()).toString());
+            }
+            
+        }
     }
     
-    private int udregnKontigent(int id){
-        Medlem medlem = storage.getMedlemMedId(id);
+    private int udregnKontigent(Medlem medlem){
         if(medlem.isAktivMedlem()){
             if(medlem.getAlder() < 18){
                 return 1000;
@@ -139,52 +166,85 @@ public class Controller {
     }
 
     private void administrerTræningOgKonkurrencer() {
-        boolean quit = false;
+
+    boolean quit = false;
         do{
-            ui.printAdministrerKontigenter();
+            ui.printAdministrerTræningOgKonkurrencer();
             String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
-                    //indsætTræningstider();
+                    opdaterTræningsTider();
                     break;
                 case "2":
-                    //indsætKonkurrencetider();
+                    opdaterKonkurrenceTider();
                     break;
                 case "3":
                     visTop5();
                     break;
+                case "4":
+                    stævneResultat();
+                    break;
+                case "9":
+                    quit = true;
+                    break;
                 case "-1":
                     quit = true;
                     break;
-            }  
-        } while(!quit);
+                default:
+                    ui.notAnOption();
+    }
+            
+        }
+        while (!quit);
+        
   
         } 
      private void visTop5(){
+         
+         ui.visTop5Disciplin();
          boolean quit = false;
             do{
-            String brugerinput = ui.scanInputMenu();
-            switch(brugerinput) {
+            String brugerinput2 = ui.scanInputMenu();
+            switch(brugerinput2) {
                 case "1":
-                    storage.visTop5("BRYST", "BRYSTDATO");
+                    ui.visTop5Disciplin(storage.visTop5("BRYST", "BRYSTDATO"), 1);
                     break;
                 case "2":
-                    storage.visTop5("BFLY", "BFDATO");
+                     ui.visTop5Disciplin(storage.visTop5("BFLY", "BFDATO"), 2);
                     break;
                 case "3":
-                    storage.visTop5("CRAWL",  "CRAWLDATO");
+                     ui.visTop5Disciplin(storage.visTop5("CRAWL",  "CRAWLDATO"), 3);
                     break;
                 case "4":
-                    storage.visTop5("RCRAWL", "RCRAWLDATO");
+                     ui.visTop5Disciplin(storage.visTop5("RCRAWL", "RCRAWLDATO"), 4);
                     break;
                 case "-1":
                     quit = true;
                     break;
+            
             }  
         } while(!quit);
          
         } 
+
    
-   
+        
+
+    private void opdaterTræningsTider() {
+            ui.visMedlemmer(storage.visMedlemmer(), true);
+            //int i = ui.hvilketMedlemÆndre();
+            //storage.opdaterTræningsTider(i);
+    }
+
+    private void opdaterKonkurrenceTider() {
+    }
+
+    private void stævneResultat() {
+
+        String i = ui.printStævne(storage.stævner());
+        if (i != null){
+            ui.printStævneResultater(storage.visStævne(i));
+        } 
+    }
 }
 

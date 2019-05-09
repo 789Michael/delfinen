@@ -1,5 +1,6 @@
 package presentation;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
 import Businesslogic.TræningMedlem;
 import java.text.DateFormat;
@@ -46,10 +47,12 @@ public class SystemUI implements UI {
     
     @Override
     public void printAdministrerTræningOgKonkurrencer() {
+        flushConsole();
         System.out.println("Vælg en af følgende muligheder:");
         System.out.println("1. Opdater trænings tider");
         System.out.println("2. Indsæt Konkurrence tider");
         System.out.println("3. Vis 5 Svømmere");
+        System.out.println("4. Vis Stævne resultater");
         System.out.println("-1. Gå tilbage");
     }
 
@@ -62,6 +65,7 @@ public class SystemUI implements UI {
     
     @Override
     public String vælgNavn() {
+        flushConsole();
         System.out.println("Indtast navn på nyt medlem:");
         String input = scan.nextLine();
         while (input.length() == 0) {
@@ -74,22 +78,49 @@ public class SystemUI implements UI {
 
     @Override
     public LocalDate vælgFødt() {
-        System.out.println("Indtast fødselsår med format [ÅÅÅÅ]:");
-        int årInput = scan.nextInt();
-        System.out.println("Indtast fødselsmåned med format [MM]:");
-        int mInput = scan.nextInt();
-        System.out.println("Indtast fødselsdato med format [DD]:");
-        int dInput = scan.nextInt();
-        LocalDate localDate = LocalDate.of(årInput, mInput, dInput);
+        flushConsole();
+        LocalDate localDate = null;
+        while(localDate == null){
+          try{
+            System.out.println("Indtast fødselsår med format [ÅÅÅÅ]:");
+            int årInput = scan.nextInt();
+            System.out.println("Indtast fødselsmåned med format [MM]:");
+            int mInput = scan.nextInt();
+            System.out.println("Indtast fødselsdato med format [DD]:");
+            int dInput = scan.nextInt();
+            localDate = LocalDate.of(årInput, mInput, dInput);
+            if(localDate.getYear() > LocalDate.now().getYear()){
+                System.out.println("LORT");
+                localDate = null;
+                throw new IllegalArgumentException();
+            }
+        }catch(Exception e){
+            flushConsole();  
+              System.out.println("Ikke gyldigt input! prøv igen");
+        }
+        }
+        scan.nextLine();
          return localDate;
     }
 
     @Override
     public int tlfNo() {
-        System.out.println("Indtast telefonnummer:");
-        int input = scan.nextInt();
-        scan.nextLine();
-        return input;  
+        flushConsole();
+        boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast telefonnummer:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() != 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;
     }
     
     @Override
@@ -100,57 +131,98 @@ public class SystemUI implements UI {
     
 
     @Override
-    public int fjernMedlem() {
-        System.out.println("Skriv ID på medlem du vil fjerne");
-        int i = scan.nextInt();
-        scan.nextLine();
+    public int fjernMedlem(ArrayList<Integer> ids) {
+        boolean quit = false;
+        int i = 0;
+        while(!quit){
+            try{
+                System.out.println("Skriv ID på medlem du vil fjerne eller  -1 for at returnere");
+                i = Integer.parseInt(scan.nextLine());
+                if(i == -1 || ids.contains(i)){
+                    quit = true;
+                }else{
+                    throw new IllegalArgumentException();
+                }
+            }catch(Exception e){
+                System.out.println("Forkert Input, Prøv igen.");
+            }
+        }            
         return i;
     }
 
     @Override
-    public void visMedlemmer(ArrayList<Medlem> medlemmer) {
+    public void visMedlemmer(ArrayList<Medlem> medlemmer, boolean bypassRS) {
+        flushConsole();
         for(Medlem m : medlemmer){
             System.out.println(m.toString());
         }
-        System.out.println("____________________________");
+        System.out.println("_________________________________");
+        if(!bypassRS){
         System.out.println("Skriv -1 for at returnere til menuen");
         boolean inputFormat = false;
             while(!inputFormat){
                 String input = scan.nextLine();
                 if(input.equals("-1")) {
                     inputFormat = true;
+                    flushConsole();
+
                 }
                 else{
                     System.out.println("Ugyldigt input, prøv igen:");
                 }
                 
-            } 
-        System.out.println("-----------------------------------------------");        
+            }
+        }
     }
     
     public boolean aktivMedlem(){
-        System.out.println("Tast 1 for aktivt medlem, 2 for passivMedlem");
-        int input = scan.nextInt();
-        scan.nextLine();
-        if(input == 1){
-            return true;
-        }else if(input == 2){
-            return false;
-        }else{
-            throw new IllegalArgumentException();
-        }
+        boolean quit = false;
+        boolean returnStatement = false;
+        flushConsole();
+        while(!quit){
+            try{
+                
+                System.out.println("Tast 1 for aktivt medlem, 2 for passivMedlem");
+                int input = Integer.parseInt(scan.nextLine());
+                if(input == 1){
+                    quit = true;
+                    returnStatement = true;
+                }else if(input == 2){
+                    quit = true;
+                }else{
+                    throw new IllegalArgumentException();
+                }
+            }catch(Exception e){
+                flushConsole();
+                System.out.println("Forkert input, prøv igen!");
+            }    
+            }
+        return returnStatement;
     }
 
     @Override
-    public int ændreMedlemsAktivitet() {
-        System.out.println("Skriv ID på medlem du vil ændre aktivitet for");
-        int i = scan.nextInt();
-        scan.nextLine();
+    public int ændreMedlemsAktivitet(ArrayList<Integer> ids) {
+        boolean quit = false;
+        int i = 0;
+        while(!quit){
+            try{
+                System.out.println("Skriv ID på medlem du vil ændre aktivitet for eller  -1 for at returnere");
+                i = Integer.parseInt(scan.nextLine());
+                if(i == -1 || ids.contains(i)){
+                    quit = true;
+                }else{
+                    throw new IllegalArgumentException();
+                }
+            }catch(Exception e){
+                System.out.println("Forkert Input, Prøv igen.");
+            }
+        }            
         return i;
-    }
+       }
 
     @Override
     public void visRestancer(ArrayList<Medlem> medlemmer) {
+        flushConsole();
         for(Medlem m : medlemmer){
             System.out.println(m.toString());
         }
@@ -167,36 +239,161 @@ public class SystemUI implements UI {
                 }
                 
             } 
-        System.out.println("-----------------------------------------------");        
+            flushConsole();
     }
 
     @Override
-    public int opdaterKontigentsDato() {
-        System.out.println("Skriv ID på medlem du vil opdatere kontigent på");
-        int i = scan.nextInt();
-        scan.nextLine();
-        return i;    
-    }
+    public int opdaterKontigentsDato(ArrayList<Integer> ids) {
+        boolean quit = false;
+        int i = 0;
+        while(!quit){
+            try{
+                System.out.println("Skriv ID på medlem du vil ændre aktivitet for eller  -1 for at returnere");
+                i = Integer.parseInt(scan.nextLine());
+                if(i == -1 || ids.contains(i)){
+                    quit = true;
+                }else{
+                    throw new IllegalArgumentException();
+                }
+            }catch(Exception e){
+                System.out.println("Forkert Input, Prøv igen.");
+            }
+        }            
+        return i;
+       }   
 
     @Override
-    public void kontigentKvitering(int pris) {
+    public int kontigentKvitering(int pris, Medlem m) {
+        flushConsole();
+        System.out.println("Du er ved at opdatere kontigentsdato for:");
+        System.out.println(m.toString());
+        System.out.println("Næste kontigents betaling er d." + m.getKontigentsDato().plusYears(1));
         System.out.println("Prisen for kontigent fornyelse er: " + pris + "DKK. bekræft betaling med 1");
-        scan.nextLine();
+        int i = 0;
+        try{
+            i = Integer.parseInt(scan.nextLine());
+        }catch(Exception e){
+            i = -1;
+        }
+        flushConsole();
+        return i;
     }
     
     @Override
-    public void visTop5Disciplin(ArrayList<TræningMedlem> tm){
-        for (TræningMedlem t : tm){
-            System.out.println(t.toString());
+    public void visTop5Disciplin(ArrayList<TræningMedlem> tm, int i){
+        flushConsole();
+        for(TræningMedlem k : tm){
+            System.out.println(k.toString(i));
         }
-        System.out.println("1. Brystsvømning");
-        System.out.println("2. Butterfly");
-        System.out.println("3. Crawl");
-        System.out.println("4. Rygcrawl");
-        scan.nextLine();
-        
-        
-                
+        System.out.println("____________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+        boolean inputFormat = false;
+            while(!inputFormat){
+                String input = scan.nextLine();
+                if(input.equals("-1")) {
+                    inputFormat = true;
+                    flushConsole();
+                }
+                else{
+                    System.out.println("Ugyldigt input, prøv igen:");
+                }
+    }        
+}
+
+    public void flushConsole() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
+
+    @Override
+    public void printString(String s) {
+        System.out.println(s);
+    }
+
+
+    public int hvilketMedlemÆndre() {
+        
+        System.out.println("Indtast ID på hvilket medlem vil du oprette træningstider for?");
+
+    
+    
+ 
+    return 0;
+    }
+
+    @Override
+    public void visTop5Disciplin() {
+        System.out.println("1. for Brystsvømning");
+        System.out.println("2. for Butterfly");
+        System.out.println("3. for Crawl");
+        System.out.println("4. for Rygcrawl");
+        System.out.println("_________________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+    }
+
+    @Override
+    public void visStævneResultater() {
+        System.out.println("1. for Brystsvømning");
+        System.out.println("2. for Butterfly");
+        System.out.println("3. for Crawl");
+        System.out.println("4. for Rygcrawl");
+        System.out.println("_________________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+    }
+
+    @Override
+    public void printStævneResultater(ArrayList<KonMedlem> kon) {
+        flushConsole();
+        for(KonMedlem k : kon){
+            System.out.println(k.toString());
+        }
+        System.out.println("_________________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+        boolean inputFormat = false;
+            while(!inputFormat){
+                String input = scan.nextLine();
+                if(input.equals("-1")) {
+                    inputFormat = true;
+                    flushConsole();
+
+                }
+                else{
+                    System.out.println("Ugyldigt input, prøv igen:");
+                }
+                
+            }
+        }
+     public String printStævne(ArrayList<String> s) {
+         flushConsole();
+        for(String k : s){
+            System.out.println(k);
+        }
+        System.out.println("_________________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+        boolean inputFormat = false;
+            String returnString = null;
+            while(!inputFormat){
+                try {
+                    
+                int input = Integer.parseInt(scan.nextLine());
+                if(input==-1) {
+                    inputFormat = true;
+                    flushConsole();
+
+                } else if (input > 0 || input <= s.size()) {
+                  returnString = s.get(input-1);
+                  inputFormat=true;
+                }
+                
+                else {
+                    throw new IllegalArgumentException();
+                }
+                
+            } catch(Exception e) {
+                    System.out.println("Ugyldigt input, prøv igen: ");
+            }
+     }  return returnString;
+}     
 }
     

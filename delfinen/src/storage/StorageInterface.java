@@ -1,5 +1,6 @@
 package storage;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
 import Businesslogic.TræningMedlem;
 import java.util.ArrayList;
@@ -25,6 +26,19 @@ public interface StorageInterface {
     
     public Medlem getMedlemMedId(int id);
     
+    public void opdaterKonkurrenceTider(KonMedlem konmedlem);
+    
+    public void opdaterTræningsTider(TræningMedlem træningMedlem);
+
+    public int højesteMedlemsId();
+    
+    public ArrayList<Integer> getIDs();
+    
     public ArrayList<TræningMedlem> visTop5(String a, String dato);
     
+    public ArrayList<KonMedlem> visStævne(String k); 
+
+    public ArrayList<String> stævner();
+
+
 }

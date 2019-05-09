@@ -97,7 +97,29 @@ public class TræningMedlem extends Medlem {
 
     @Override
     public String toString() {
-        return "Tr\u00e6ningMedlem{" + "tr\u00e6ningBryst=" + træningBryst + ", brystDato=" + brystDato + ", tr\u00e6ningBfly=" + træningBfly + ", bfDato=" + bfDato + ", tr\u00e6ningCrawl=" + træningCrawl + ", crawlDato=" + crawlDato + ", tr\u00e6ningRcrawl=" + træningRcrawl + ", rcDato=" + rcDato + '}';
+
+        return "Bedste tider (Træning)|| " + "Bryst: " + træningBryst + " - " + brystDato + "| Butterfly:" + træningBfly + " - " + 
+                bfDato + "| Crawl" + træningCrawl + " - " + crawlDato + "Rygcrawl" + træningRcrawl + " - " + rcDato + "|";
+    }
+    
+    public String toString(int i) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Bedste tider (Træning)|| ");
+    switch (i){
+        case 1:
+            sb.append(navn + "Bryst: " + træningBryst + " - " + brystDato);
+            break;
+        case 2:
+            sb.append(navn + "Butterfly: " + træningBfly + " - " + bfDato);
+            break;
+        case 3: 
+            sb.append(navn + "Crawl: " + træningCrawl + " - " + crawlDato);
+            break;
+        case 4: 
+            sb.append(navn + "Rygcrawl: " + træningRcrawl + " - " + rcDato);
+            break;
+    }
+    return sb.toString();
     }
     
     

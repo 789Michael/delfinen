@@ -13,7 +13,7 @@ import java.util.*;
 public class Medlem {
     
     private int id;
-    private String navn;
+    protected String navn;
     private LocalDate alder;
     private String tlfNo;
     private boolean aktivMedlem;
@@ -75,7 +75,7 @@ public class Medlem {
 
     @Override
     public String toString() {
-        return "Medlem{" + "id=" + id + ", navn=" + navn + ", alder=" + calculateAge(alder, LocalDate.now()) + ", tlfNo=" + tlfNo + ", aktivMedlem=" + aktivMedlem + ", kontigentsDato=" + kontigentsDato + '}';
+        return "|ID: " + id + "| Navn: " + navn + "| Alder: " + calculateAge(alder, LocalDate.now()) + "| Tlf.: " + tlfNo + "| Aktivt medlem: " + aktivMedlem + "| Kontingent Dato: " + kontigentsDato + "|";
     }
 
     public int calculateAge(LocalDate birthDate, LocalDate currentDate) {
