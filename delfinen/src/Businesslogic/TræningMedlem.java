@@ -97,8 +97,8 @@ public class TræningMedlem extends Medlem {
 
     @Override
     public String toString() {
-        return "Bedste tider (Træning)|| " + "Bryst: " + træningBryst + " - " + brystDato + "| Butterfly:" + træningBfly + " - " + 
-                bfDato + "| Crawl" + træningCrawl + " - " + crawlDato + "Rygcrawl" + træningRcrawl + " - " + rcDato + "|";
+        return "Bedste tider (Træning)|| " + " Bryst: " + træningBryst + " Sek." + " - " + brystDato + "| Butterfly: " + træningBfly + " Sek." + " - " + 
+                bfDato + "| Crawl: " + træningCrawl + " Sek." + " - " + crawlDato + "Rygcrawl: " + træningRcrawl + " - " + rcDato + "|";
     }
     
     public String toString(int i) {
@@ -106,16 +106,16 @@ public class TræningMedlem extends Medlem {
     sb.append("Bedste tider (Træning)|| ");
     switch (i){
         case 1:
-            sb.append(navn + " Brystsvømning: " + træningBryst + " - " + brystDato);
+            sb.append(navn + " Brystsvømning: " + træningBryst + " sek." + " - " + brystDato);
             break;
         case 2:
-            sb.append(navn + " Butterfly: " + træningBfly + " - " + bfDato);
+            sb.append(navn + " Butterfly: " + træningBfly + " sek." + " - " + bfDato);
             break;
         case 3: 
-            sb.append(navn + " Crawl: " + træningCrawl + " - " + crawlDato);
+            sb.append(navn + " Crawl: " + træningCrawl + " sek." + " - " + crawlDato);
             break;
         case 4: 
-            sb.append(navn + " Rygcrawl: " + træningRcrawl + " - " + rcDato);
+            sb.append(navn + " Rygcrawl: " + træningRcrawl + " sek." + " - " + rcDato);
             break;
     }
     return sb.toString();
