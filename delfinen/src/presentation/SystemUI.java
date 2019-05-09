@@ -1,6 +1,8 @@
 package presentation;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -50,6 +52,7 @@ public class SystemUI implements UI {
         System.out.println("1. Opdater trænings tider");
         System.out.println("2. Indsæt Konkurrence tider");
         System.out.println("3. Vis 5 Svømmere");
+        System.out.println("4. Vis Stævne resultater");
         System.out.println("-1. Gå tilbage");
     }
 
@@ -277,6 +280,26 @@ public class SystemUI implements UI {
     }
     
     @Override
+    public void visTop5Disciplin(ArrayList<TræningMedlem> tm, int i){
+        flushConsole();
+        for(TræningMedlem k : tm){
+            System.out.println(k.toString(i));
+        }
+        System.out.println("____________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+        boolean inputFormat = false;
+            while(!inputFormat){
+                String input = scan.nextLine();
+                if(input.equals("-1")) {
+                    inputFormat = true;
+                    flushConsole();
+                }
+                else{
+                    System.out.println("Ugyldigt input, prøv igen:");
+                }
+    }        
+}
+
     public void flushConsole() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
@@ -289,28 +312,204 @@ public class SystemUI implements UI {
     }
 
 
-    public int hvilketMedlemÆndre() {
+    public int hvilketMedlemÆndre(ArrayList<Integer> ids) {
         
-        System.out.println("Indtast ID på hvilket medlem vil du oprette træningstider for?");
-
-    
-    
-    /*public int visTop5Disciplin(){
-        System.out.println("1. Brystsvømning");
-        System.out.println("2. Butterfly");
-        System.out.println("3. Crawl");
-        System.out.println("4. Rygcrawl");
-
-        int i = scan.nextInt();
-        scan.nextLine();
-        return i;*/
-    return 0;
+        boolean quit = false;
+        int i = 0;
+        while(!quit){
+            try{
+                System.out.println("Skriv ID på medlem du vil opdatere tider for eller tast  -1 for at returnere");
+                i = Integer.parseInt(scan.nextLine());
+                if(i == -1 || ids.contains(i)){
+                    quit = true;
+                }else{
+                    throw new IllegalArgumentException();
+                }
+            }catch(Exception e){
+                System.out.println("Forkert Input, Prøv igen.");
+            }
+        }            
+        return i;
+        
+ 
     }
 
     @Override
-    public int visTop5Disciplin() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void visTop5Disciplin() {
+        System.out.println("1. for Brystsvømning");
+        System.out.println("2. for Butterfly");
+        System.out.println("3. for Crawl");
+        System.out.println("4. for Rygcrawl");
+        System.out.println("_________________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
     }
+
+    @Override
+    public void visStævneResultater() {
+        System.out.println("1. for Brystsvømning");
+        System.out.println("2. for Butterfly");
+        System.out.println("3. for Crawl");
+        System.out.println("4. for Rygcrawl");
+        System.out.println("_________________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+    }
+
+    @Override
+    public void printStævneResultater(ArrayList<KonMedlem> kon) {
+        flushConsole();
+        for(KonMedlem k : kon){
+            System.out.println(k.toString());
+        }
+        System.out.println("_________________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+        boolean inputFormat = false;
+            while(!inputFormat){
+                String input = scan.nextLine();
+                if(input.equals("-1")) {
+                    inputFormat = true;
+                    flushConsole();
+
+                }
+                else{
+                    System.out.println("Ugyldigt input, prøv igen:");
+                }
+                
+            }
+        }
+     public String printStævne(ArrayList<String> s) {
+         flushConsole();
+        for(String k : s){
+            System.out.println(k);
+        }
+        System.out.println("_________________________________");
+        System.out.println("Skriv -1 for at returnere til menuen");
+        boolean inputFormat = false;
+            String returnString = null;
+            while(!inputFormat){
+                try {
+                    
+                int input = Integer.parseInt(scan.nextLine());
+                if(input==-1) {
+                    inputFormat = true;
+                    flushConsole();
+
+                } else if (input > 0 || input <= s.size()) {
+                  returnString = s.get(input-1);
+                  inputFormat=true;
+                }
+                
+                else {
+                    throw new IllegalArgumentException();
+                }
+                
+            } catch(Exception e) {
+                    System.out.println("Ugyldigt input, prøv igen: ");
+            }
+     }  return returnString;
+}     
+    public int vælgBrystTid() {
+    boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast Bryst tid i sekunder:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() > 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;
+    }
+
+    @Override
+    public LocalDate vælgTræningDato() {
+    LocalDate localDate = null;
+        while(localDate == null){
+          try{
+            System.out.println("Indtast år for tidstagning med format [ÅÅÅÅ]:");
+            int årInput = scan.nextInt();
+            System.out.println("Indtast måned for tidstagning med format [MM]:");
+            int mInput = scan.nextInt();
+            System.out.println("Indtast dato for tidstagning med format [DD]:");
+            int dInput = scan.nextInt();
+            localDate = LocalDate.of(årInput, mInput, dInput);
+            if(localDate.getYear() > LocalDate.now().getYear()){
+                System.out.println("LORT");
+                localDate = null;
+                throw new IllegalArgumentException();
+            }
+        }catch(Exception e){
+            flushConsole();  
+              System.out.println("Ikke gyldigt input! prøv igen");
+        }
+        }
+        scan.nextLine();
+         return localDate;}
+
+    @Override
+    public int vælgBFtid() {
+    boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast Butterfly tid i sekunder:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() > 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;}
+
+    
+    
+
+    @Override
+    public int vælgCrawlTid() {
+    boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast Crawl tid i sekunder:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() > 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;}
+
+    
+
+    @Override
+    public int vælgRCTid() {
+    boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast Rygcrawltid i sekunder:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() > 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;}
+
+    
     
 }
     

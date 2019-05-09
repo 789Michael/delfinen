@@ -18,16 +18,16 @@ public class TræningMedlem extends Medlem {
     private LocalDate rcDato;
   
     
-    public TræningMedlem(int id, String navn, LocalDate alder, String tlfNo, int træningBryst, LocalDate brystDato, int træningBfly, LocalDate bfDato, int træningCrawl, LocalDate crawlDato, int træningRcrawl, LocalDate rcDato) {
+    public TræningMedlem(int id, String navn, LocalDate alder, String tlfNo, int træningBryst, LocalDate træningDato, int træningBfly, int træningCrawl, int træningRcrawl) {
         super(id, navn, alder, tlfNo, true);
         this.træningBryst = træningBryst;
         this.træningBfly = træningBfly;
         this.træningCrawl = træningCrawl;
         this.træningRcrawl = træningRcrawl;
-        this.brystDato = brystDato;
-        this.bfDato = bfDato;
-        this.crawlDato = crawlDato;
-        this.rcDato = rcDato;
+        this.brystDato = træningDato;
+        this.bfDato = træningDato;
+        this.crawlDato = træningDato;
+        this.rcDato = træningDato;
         
     }
 
@@ -99,6 +99,26 @@ public class TræningMedlem extends Medlem {
     public String toString() {
         return "Bedste tider (Træning)|| " + "Bryst: " + træningBryst + " - " + brystDato + "| Butterfly:" + træningBfly + " - " + 
                 bfDato + "| Crawl" + træningCrawl + " - " + crawlDato + "Rygcrawl" + træningRcrawl + " - " + rcDato + "|";
+    }
+    
+    public String toString(int i) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Bedste tider (Træning)|| ");
+    switch (i){
+        case 1:
+            sb.append(navn + "Bryst: " + træningBryst + " - " + brystDato);
+            break;
+        case 2:
+            sb.append(navn + "Butterfly: " + træningBfly + " - " + bfDato);
+            break;
+        case 3: 
+            sb.append(navn + "Crawl: " + træningCrawl + " - " + crawlDato);
+            break;
+        case 4: 
+            sb.append(navn + "Rygcrawl: " + træningRcrawl + " - " + rcDato);
+            break;
+    }
+    return sb.toString();
 
     }
     

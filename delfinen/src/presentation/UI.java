@@ -1,6 +1,8 @@
 package presentation;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -48,5 +50,26 @@ public interface UI {
     
     public void flushConsole();
     
-    public int visTop5Disciplin();
+    public void visTop5Disciplin(ArrayList<TræningMedlem> tm, int i);
+
+    public void visTop5Disciplin();
+    
+    public void visStævneResultater();
+
+    public void printStævneResultater(ArrayList<KonMedlem> kon);
+    
+    public String printStævne(ArrayList<String> s);
+
+    public int hvilketMedlemÆndre(ArrayList <Integer> ids);
+    
+    public int vælgBrystTid();
+    
+    public LocalDate vælgTræningDato();
+    
+    public int vælgBFtid();
+    
+    public int vælgCrawlTid();
+    
+    public int vælgRCTid ();
+    
 }

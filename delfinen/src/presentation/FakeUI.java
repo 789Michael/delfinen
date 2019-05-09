@@ -1,6 +1,8 @@
 package presentation;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
+import Businesslogic.TræningMedlem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -108,7 +110,63 @@ public class FakeUI implements UI {
     }
 
     @Override
-    public int visTop5Disciplin() {
+    public void visTop5Disciplin() {
+    
+    }
+    public int hvilketMedlemÆndre(ArrayList<Integer> ids) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public int vælgBrystTid() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
+    @Override
+    public int vælgBFtid() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
+    @Override
+    public int vælgCrawlTid() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+
+    }
+
+    @Override
+    public int vælgRCTid() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+
+    }
+
+    @Override
+    public LocalDate vælgTræningDato() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void printStævneResultater(ArrayList<KonMedlem> kon) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String printStævne(ArrayList<String> s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void visTop5Disciplin(ArrayList<TræningMedlem> tm, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void visStævneResultater() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

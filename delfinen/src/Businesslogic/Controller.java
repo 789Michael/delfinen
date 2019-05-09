@@ -181,6 +181,9 @@ public class Controller {
                 case "3":
                     visTop5();
                     break;
+                case "4":
+                    stævneResultat();
+                    break;
                 case "9":
                     quit = true;
                     break;
@@ -197,41 +200,60 @@ public class Controller {
   
         } 
      private void visTop5(){
+         
+         ui.visTop5Disciplin();
          boolean quit = false;
             do{
-            ui.visTop5Disciplin();
-            String brugerinput = ui.scanInputMenu();
-            switch(brugerinput) {
+            String brugerinput2 = ui.scanInputMenu();
+            switch(brugerinput2) {
                 case "1":
-                    storage.visTop5("BRYST", "BRYSTDATO");
+                    ui.visTop5Disciplin(storage.visTop5("BRYST", "BRYSTDATO"), 1);
                     break;
                 case "2":
-                    storage.visTop5("BFLY", "BFDATO");
+                     ui.visTop5Disciplin(storage.visTop5("BFLY", "BFDATO"), 2);
                     break;
                 case "3":
-                    storage.visTop5("CRAWL",  "CRAWLDATO");
+                     ui.visTop5Disciplin(storage.visTop5("CRAWL",  "CRAWLDATO"), 3);
                     break;
                 case "4":
-                    storage.visTop5("RCRAWL", "RCRAWLDATO");
+                     ui.visTop5Disciplin(storage.visTop5("RCRAWL", "RCRAWLDATO"), 4);
                     break;
                 case "-1":
                     quit = true;
                     break;
+            
             }  
         } while(!quit);
-  
+         
         } 
 
    
         
 
     private void opdaterTræningsTider() {
-            ui.visMedlemmer(storage.visMedlemmer(), true);
-            //int i = ui.hvilketMedlemÆndre();
-            //storage.opdaterTræningsTider(i);
+            ui.visMedlemmer(storage.visMedlemmer(),true);
+        int id = ui.hvilketMedlemÆndre(storage.getIDs());
+        Medlem medlem = storage.getMedlemMedId(id);
+        ui.flushConsole();
+        if(id != -1){
+            TræningMedlem træningmedlem = new TræningMedlem((id), medlem.getNavn(), medlem.getFødselsdag(), medlem.getTlfNo(), ui.vælgBrystTid(), ui.vælgTræningDato(), ui.vælgBFtid(), ui.vælgCrawlTid(), ui.vælgRCTid());
+            storage.opdaterTræningsTider(træningmedlem);
+            System.out.println("vi er så langt");
+            ui.printString("Træningstider opdateret for medlem: " + storage.getTræningMedlemMedId(id).toString());
+    }
+    }
+        
+    private void opdaterKonkurrenceTider() {
+        
     }
 
-    private void opdaterKonkurrenceTider() {
+    private void stævneResultat() {
+
+        String i = ui.printStævne(storage.stævner());
+        if (i != null){
+            ui.printStævneResultater(storage.visStævne(i));
+        } 
     }
 }
+
 
