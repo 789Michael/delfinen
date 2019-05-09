@@ -80,7 +80,7 @@ public class Medlem {
     
     @Override
     public String toString() {
-        return String.format("|ID: %2d |Navn: %s16| Alder: %02d | Tlf.: %s| Aktiv: %s| Kontigent Dato: %s |", id, trimNavn() , calculateAge(alder, LocalDate.now()), tlfNo , aktivMedlem, kontigentsDato );
+        return String.format("|ID: %2d |Navn: %16s| Alder: %02d | Tlf.: %s| Aktiv: %s| Kontigent Dato: %s |", id, trimNavn() , calculateAge(alder, LocalDate.now()), tlfNo , aktivMedlem, kontigentsDato );
  }
     
     private String trimNavn() {

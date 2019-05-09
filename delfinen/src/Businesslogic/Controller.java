@@ -119,7 +119,7 @@ public class Controller {
             String brugerinput = ui.scanInputMenu();
             switch(brugerinput) {
                 case "1":
-                    visTop5();
+                    visRestancer();
                     break;
                 case "2":
                     opdaterKontigent();

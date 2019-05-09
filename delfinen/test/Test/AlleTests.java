@@ -52,4 +52,14 @@ public class AlleTests {
         storage.opretMedlem(new Medlem(10,"Sara", null, "12332121", true, null));
         assertTrue(storage.visMedlemmer().size()==12);
     }
+    @Test
+    public void testÆndreMedlemsAktivitet(){
+        assertTrue(storage.getMedlemMedId(2).isAktivMedlem()==true);
+        storage.getMedlemMedId(2).setAktivMedlem(false);
+        assertTrue(storage.getMedlemMedId(2).isAktivMedlem()==false);
+    }
+    @Test
+    public void testOpdaterRestance(){
+        
+    }
 }
