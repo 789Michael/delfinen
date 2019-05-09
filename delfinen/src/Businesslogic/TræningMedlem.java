@@ -97,13 +97,9 @@ public class TræningMedlem extends Medlem {
 
     @Override
     public String toString() {
-<<<<<<< HEAD
         return "Bedste tider (Træning)|| " + "Bryst: " + træningBryst + " - " + brystDato + "| Butterfly:" + træningBfly + " - " + 
                 bfDato + "| Crawl" + træningCrawl + " - " + crawlDato + "Rygcrawl" + træningRcrawl + " - " + rcDato + "|";
-=======
-        String s;
-        return "Tr\u00e6ningMedlem{" + "tr\u00e6ningBryst=" + træningBryst + ", brystDato=" + brystDato + ", tr\u00e6ningBfly=" + træningBfly + ", bfDato=" + bfDato + ", tr\u00e6ningCrawl=" + træningCrawl + ", crawlDato=" + crawlDato + ", tr\u00e6ningRcrawl=" + træningRcrawl + ", rcDato=" + rcDato + '}';
->>>>>>> 2c944475c177fe1abc45d64c14565d66ab399e2e
+
     }
     
     
