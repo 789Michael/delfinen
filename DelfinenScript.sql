@@ -72,11 +72,24 @@ insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (4, 42, "2012-04-13", 420, "2010-11-02", 10, "2001-05-13", 71, "2016-05-24");
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (5, 67, "2012-04-13", 234, "2010-11-02", 29, "2017-07-18", 72, "2016-05-24");
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (6, 87, "2012-04-13", 278, "2010-11-02", 31, "2017-07-18", 68, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (7, 98, "2012-04-13", 335, "2010-11-02", 135, "2017-07-18", 201, "2017-05-21");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (8, 65, "2012-04-13", 336, "2010-11-02", 153, "2017-07-18", 188, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (9, 146, "2012-04-13", 431, "2010-11-02", 147, "2017-07-18", 174, "2013-01-01");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (10, 142, "2012-04-13", 420, "2010-11-02", 110, "2001-05-13", 171, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (11, 267, "2012-04-13", 365, "2010-11-02", 219, "2017-07-18", 172, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (12, 387, "2012-04-13", 398, "2010-11-02", 311, "2017-07-18", 168, "2016-05-24");
+
+
+
+
+
+
 
 # Opretter stævner til brug af at kunne oprette resultater
 insert into stævne (snavn) values ("DGI Byen 2018");
 insert into stævne (snavn) values ("Brøndby 2016");
 insert into stævne (snavn) values ("DM 2017");
+insert into stævne (snavn) values ("DM 2001");
 
 # Opretter resultater for 'DGI Byen 2018' stævnet
 insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rcrawl, rcplads) values (1, 1, 41, 4, 0, 0, 0, 0, 0, 0);
@@ -95,3 +108,9 @@ insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rc
 insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rcrawl, rcplads) values (3, 2, 0, 0, 59, 3, 0, 0, 0, 0);
 insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rcrawl, rcplads) values (3, 3, 0, 0, 0, 0, 38, 3, 0, 0);
 insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rcrawl, rcplads) values (3, 4, 0, 0, 0, 0, 0, 0, 49, 3);
+
+# Opretter resultater for 'DGI Byen 2018' stævnet
+insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rcrawl, rcplads) values (4, 1, 41, 4, 0, 0, 0, 0, 0, 0);
+insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rcrawl, rcplads) values (4, 2, 0, 0, 57, 3, 0, 0, 0, 0);
+insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rcrawl, rcplads) values (4, 3, 36, 4, 0, 0, 35, 2, 10, 8);
+insert into resultater (sid, id, bryst, bplads, bfly, bfplads, crawl, cplads, rcrawl, rcplads) values (4, 4, 0, 0, 41, 1, 0, 0, 48, 2);

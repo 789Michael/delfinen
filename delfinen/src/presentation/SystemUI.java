@@ -297,7 +297,7 @@ public class SystemUI implements UI {
                 else{
                     System.out.println("Ugyldigt input, prøv igen:");
                 }
-    }        
+    }   visTop5Disciplin();     
 }
 
     public void flushConsole() {
@@ -358,6 +358,7 @@ public class SystemUI implements UI {
     public void printStævneResultater(ArrayList<KonMedlem> kon) {
         flushConsole();
         for(KonMedlem k : kon){
+            
             System.out.println(k.toString());
         }
         System.out.println("_________________________________");
@@ -378,8 +379,10 @@ public class SystemUI implements UI {
         }
      public String printStævne(ArrayList<String> s) {
          flushConsole();
+         int i = 0;
         for(String k : s){
-            System.out.println(k);
+            i++;
+            System.out.println(i +": " + k);
         }
         System.out.println("_________________________________");
         System.out.println("Skriv -1 for at returnere til menuen");
