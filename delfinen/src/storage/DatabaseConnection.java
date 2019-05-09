@@ -1,5 +1,6 @@
 package storage;
 
+import Businesslogic.KonMedlem;
 import Businesslogic.Medlem;
 import Businesslogic.TræningMedlem;
 import java.sql.Connection;
@@ -90,7 +91,6 @@ public class DatabaseConnection implements StorageInterface {
     @Override
     public void ændreMedlemsAktivitet(int id) {
         try {
-            System.out.println("test1");
            Connection connection = makeConnection();
            Statement statement = connection.createStatement();
            statement.executeUpdate("UPDATE medlem SET AKTIV = " + ((getMedlemMedId(id).isAktivMedlem()) ? 0 : 1)  + " WHERE ID = " + id + ";");
@@ -184,16 +184,67 @@ public class DatabaseConnection implements StorageInterface {
             return null;
         }
     }
-        public void opdaterTræningsTider(TræningMedlem træningMedlem){
+            @Override
+            public void opdaterTræningsTider(TræningMedlem træningmedlem){
             try {
             Connection connection = makeConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES (" + træningMedlem.getId()+ "," + træningMedlem.getTræningBryst()+ ",'" + træningMedlem.getBrystDato() + "'," + træningMedlem.getTræningBfly()+ ",'"+ træningMedlem.getBfDato()+ "',"+ træningMedlem.getTræningCrawl()+ ",'"+ træningMedlem.getCrawlDato()+"',"+træningMedlem.getTræningRcrawl()+ ",'"+ træningMedlem.getRcDato()+"'");
+            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES (" + træningmedlem.getId()+ "," + træningmedlem.getTræningBryst()+ ",'" + træningmedlem.getBrystDato() + "'," + træningmedlem.getTræningBfly()+ ",'"+ træningmedlem.getBfDato()+ "',"+ træningmedlem.getTræningCrawl()+ ",'"+ træningmedlem.getCrawlDato()+"',"+træningmedlem.getTræningRcrawl()+ ",'"+ træningmedlem.getRcDato()+"'");
                     }
                     catch (Exception e){
                         System.out.println("Fejl i Opdater Træningstider: " + e.getMessage());
                     }
                 }
-        public void opdaterKonkurrenceTider(){      
-}
+
+            @Override
+            public void opdaterKonkurrenceTider(KonMedlem konmedlem){
+            
+            try { 
+                Connection connection = makeConnection();
+                Statement statement = connection.createStatement();
+                //statement.executeUpdate("INSERT INTO resultater (SID, ID, BRYST, BPLADS, BFLY, BFPLADS, CRAWL, CPLADS, RCRAWL, RCPLADS) VALUES (" + konmedlem.getsID()+"," + konmedlem.getId()+","+konmedlem.getBryst() + "," + konmedlem.getbPlads()+"," + konmedlem.getBfly()+ "," + konmedlem.getBfPlads()+ ","+ konmedlem.getCrawl()+ konmedlem.getcPlads()+ "," + konmedlem.getRcrawl()+ "," + konmedlem.getRcPlads());
+            }
+            catch (Exception e) {
+                System.out.println("Fejl i opdater konkurrencetider: " + e.getMessage());
+            }
+            
+        }
+        
+        @Override
+        public int højesteMedlemsId() {
+            
+            try {
+                Connection connection = makeConnection();
+                Statement statement = connection.createStatement();
+                ResultSet result = statement.executeQuery("SELECT MAX(ID) FROM medlem;");
+                result.next();
+                return result.getInt(1);
+            }
+            catch(Exception e) {
+                System.out.println("maxOrdreNummer - " + e.getMessage());
+                return -1;
+            }
+                    
+        }
+
+    @Override
+    public ArrayList<Integer> getIDs() {
+        try {
+           Connection connection = makeConnection();
+           Statement statement = connection.createStatement();
+           ResultSet result = statement.executeQuery("SELECT ID FROM medlem");
+           
+           ArrayList<Integer> returnArray = new ArrayList();
+           
+           while (result.next()) {
+              returnArray.add(result.getInt("ID"));
+           }
+           return returnArray;
+           
+        }
+        catch (Exception e) {
+            System.out.println("Fejl i visMedlemmer: " + e.getMessage());
+            return null;
+        }
+    }
 }
