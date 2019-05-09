@@ -41,7 +41,7 @@ public class DatabaseConnection implements StorageInterface {
            Connection connection = makeConnection();
            Statement statement = connection.createStatement();
            statement.executeUpdate("INSERT INTO medlem (mname, alder, tlfno, aktiv, kontigent) VALUES ('" + medlem.getNavn() + "','" + medlem.getFødselsdag().toString() + "','" + medlem.getTlfNo() + "'," + ((medlem.isAktivMedlem()) ? 1 : 0) + ",'" + medlem.getKontigentsDato()  + "');");
-           statement.executeUpdate("insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values ("+ højesteMedlemsId() +", 0, '2012-04-13', 0, '2012-04-13', 0, '2012-04-13', 0, '2012-04-13');");
+           statement.executeUpdate("insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values ("+ højesteMedlemsId() +", 99999, '2012-04-13', 9999999, '2012-04-13', 999999, '2012-04-13', 99999, '2012-04-13');");
         }
         catch (Exception e){
             System.out.println("Fejl i opretMedlem: " + e.getMessage());
