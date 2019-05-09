@@ -73,9 +73,21 @@ public class Medlem {
         this.kontigentsDato = kontigentsDato;
     }
 
+//    @Override
+//    public String toString() {
+//        return "|ID: " + id + "| Navn: " + navn + "| Alder: " + calculateAge(alder, LocalDate.now()) + "| Tlf.: " + tlfNo + "| Aktivt medlem: " + aktivMedlem + "| Kontingent Dato: " + kontigentsDato + "|";
+//    }
+    
     @Override
     public String toString() {
-        return "|ID: " + id + "| Navn: " + navn + "| Alder: " + calculateAge(alder, LocalDate.now()) + "| Tlf.: " + tlfNo + "| Aktivt medlem: " + aktivMedlem + "| Kontingent Dato: " + kontigentsDato + "|";
+        return String.format("|ID: %2d |Navn: %s16| Alder: %02d | Tlf.: %s| Aktiv: %s| Kontigent Dato: %s |", id, trimNavn() , calculateAge(alder, LocalDate.now()), tlfNo , aktivMedlem, kontigentsDato );
+ }
+    
+    private String trimNavn() {
+        if(navn.length()>30) {
+        return navn.substring(0,27)+"...";
+    }
+    return navn;
     }
 
     public int calculateAge(LocalDate birthDate, LocalDate currentDate) {
