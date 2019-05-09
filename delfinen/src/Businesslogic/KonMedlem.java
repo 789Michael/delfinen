@@ -115,7 +115,7 @@ public class KonMedlem extends Medlem {
     
     @Override
     public String toString() {
-        return "KonMedlem{" + "sID=" + sID + ", sNavn=" + sNavn + ", bryst=" + bryst + ", bPlads=" + bPlads + ", bfly=" + bfly + ", bfPlads=" + bfPlads + ", crawl=" + crawl + ", cPlads=" + cPlads + ", rcrawl=" + rcrawl + ", rcPlads=" + rcPlads + '}';
+        return  sNavn +"Deltager " + navn + ", Brystsvømning tid " + bryst + " Pladsering " + bPlads + "|| Butterfly tid " + bfly + " og Pladsering " + bfPlads + "|| Crawl tid " + crawl + " crawl pladsering " + cPlads + "|| Rygcrawl " + rcrawl + " Pladsering " + rcPlads + '}';
     
 }
 }

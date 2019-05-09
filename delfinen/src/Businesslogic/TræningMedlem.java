@@ -106,16 +106,16 @@ public class TræningMedlem extends Medlem {
     sb.append("Bedste tider (Træning)|| ");
     switch (i){
         case 1:
-            sb.append(navn + "Bryst: " + træningBryst + " - " + brystDato);
+            sb.append(navn + " Brystsvømning: " + træningBryst + " - " + brystDato);
             break;
         case 2:
-            sb.append(navn + "Butterfly: " + træningBfly + " - " + bfDato);
+            sb.append(navn + " Butterfly: " + træningBfly + " - " + bfDato);
             break;
         case 3: 
-            sb.append(navn + "Crawl: " + træningCrawl + " - " + crawlDato);
+            sb.append(navn + " Crawl: " + træningCrawl + " - " + crawlDato);
             break;
         case 4: 
-            sb.append(navn + "Rygcrawl: " + træningRcrawl + " - " + rcDato);
+            sb.append(navn + " Rygcrawl: " + træningRcrawl + " - " + rcDato);
             break;
     }
     return sb.toString();
