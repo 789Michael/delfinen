@@ -312,14 +312,26 @@ public class SystemUI implements UI {
     }
 
 
-    public int hvilketMedlemÆndre() {
+    public int hvilketMedlemÆndre(ArrayList<Integer> ids) {
         
-        System.out.println("Indtast ID på hvilket medlem vil du oprette træningstider for?");
-
-    
-    
+        boolean quit = false;
+        int i = 0;
+        while(!quit){
+            try{
+                System.out.println("Skriv ID på medlem du vil opdatere tider for eller tast  -1 for at returnere");
+                i = Integer.parseInt(scan.nextLine());
+                if(i == -1 || ids.contains(i)){
+                    quit = true;
+                }else{
+                    throw new IllegalArgumentException();
+                }
+            }catch(Exception e){
+                System.out.println("Forkert Input, Prøv igen.");
+            }
+        }            
+        return i;
+        
  
-    return 0;
     }
 
     @Override
@@ -395,5 +407,109 @@ public class SystemUI implements UI {
             }
      }  return returnString;
 }     
+    public int vælgBrystTid() {
+    boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast Bryst tid i sekunder:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() > 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;
+    }
+
+    @Override
+    public LocalDate vælgTræningDato() {
+    LocalDate localDate = null;
+        while(localDate == null){
+          try{
+            System.out.println("Indtast år for tidstagning med format [ÅÅÅÅ]:");
+            int årInput = scan.nextInt();
+            System.out.println("Indtast måned for tidstagning med format [MM]:");
+            int mInput = scan.nextInt();
+            System.out.println("Indtast dato for tidstagning med format [DD]:");
+            int dInput = scan.nextInt();
+            localDate = LocalDate.of(årInput, mInput, dInput);
+            if(localDate.getYear() > LocalDate.now().getYear()){
+                System.out.println("LORT");
+                localDate = null;
+                throw new IllegalArgumentException();
+            }
+        }catch(Exception e){
+            flushConsole();  
+              System.out.println("Ikke gyldigt input! prøv igen");
+        }
+        }
+        scan.nextLine();
+         return localDate;}
+
+    @Override
+    public int vælgBFtid() {
+    boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast Butterfly tid i sekunder:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() > 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;}
+
+    
+    
+
+    @Override
+    public int vælgCrawlTid() {
+    boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast Crawl tid i sekunder:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() > 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;}
+
+    
+
+    @Override
+    public int vælgRCTid() {
+    boolean quit = false;
+        int input = 0;
+        while (!quit){
+            try{
+               System.out.println("Indtast Rygcrawltid i sekunder:");
+               input = Integer.parseInt(scan.nextLine());
+               if(String.valueOf(input).length() > 8) throw new IllegalArgumentException();
+               quit = true; 
+            }
+        catch(Exception e){
+            flushConsole();
+            System.out.println("Ikke Gyldigt Input, Prøv igen:");
+            }
+        }
+        return input;}
+
+    
+    
 }
     

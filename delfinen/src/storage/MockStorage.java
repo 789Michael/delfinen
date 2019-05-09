@@ -113,10 +113,8 @@ public class MockStorage implements StorageInterface {
     }
     
 
-    @Override
-    public void opdaterTræningsTider(TræningMedlem træningmedlem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
 
     
 
@@ -131,8 +129,9 @@ public class MockStorage implements StorageInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+        
     @Override
-    public ArrayList<KonMedlem> visStævne(String k) {
+    public Medlem getTræningMedlemMedId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -142,5 +141,14 @@ public class MockStorage implements StorageInterface {
     }
 
    
+
+    public void opdaterTræningsTider(TræningMedlem m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public ArrayList<KonMedlem> visStævne(String k) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

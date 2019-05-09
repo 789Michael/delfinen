@@ -28,7 +28,7 @@ public interface StorageInterface {
     
     public void opdaterKonkurrenceTider(KonMedlem konmedlem);
     
-    public void opdaterTræningsTider(TræningMedlem træningMedlem);
+    public void opdaterTræningsTider(TræningMedlem m);
 
     public int højesteMedlemsId();
     
@@ -40,5 +40,6 @@ public interface StorageInterface {
 
     public ArrayList<String> stævner();
 
+    public Medlem getTræningMedlemMedId(int id);
 
 }

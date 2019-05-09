@@ -231,12 +231,20 @@ public class Controller {
         
 
     private void opdaterTræningsTider() {
-            ui.visMedlemmer(storage.visMedlemmer(), true);
-            //int i = ui.hvilketMedlemÆndre();
-            //storage.opdaterTræningsTider(i);
+            ui.visMedlemmer(storage.visMedlemmer(),true);
+        int id = ui.hvilketMedlemÆndre(storage.getIDs());
+        Medlem medlem = storage.getMedlemMedId(id);
+        ui.flushConsole();
+        if(id != -1){
+            TræningMedlem træningmedlem = new TræningMedlem((id), medlem.getNavn(), medlem.getFødselsdag(), medlem.getTlfNo(), ui.vælgBrystTid(), ui.vælgTræningDato(), ui.vælgBFtid(), ui.vælgCrawlTid(), ui.vælgRCTid());
+            storage.opdaterTræningsTider(træningmedlem);
+            System.out.println("vi er så langt");
+            ui.printString("Træningstider opdateret for medlem: " + storage.getTræningMedlemMedId(id).toString());
     }
-
+    }
+        
     private void opdaterKonkurrenceTider() {
+        
     }
 
     private void stævneResultat() {
@@ -247,4 +255,5 @@ public class Controller {
         } 
     }
 }
+
 

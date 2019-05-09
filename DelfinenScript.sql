@@ -66,10 +66,10 @@ insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("Fie", "1970-
 insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("MORTY", "2005-3-12", "12345678", 1, "2018-4-14");
 insert into medlem (mname, alder, tlfno, aktiv, kontigent) values ("RICK", "1970-3-12", "12345678", 0, "2018-4-14");
 # Opretter træningstider til "træningstider" tabellen
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (1, 40, "2012-04-13", 250, "2010-11-02", 35, "2017-07-18", 0, null);
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (1, 40, "2012-04-13", 250, "2010-11-02", 35, "2017-07-18", 20, "2017-05-21");
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (2, 80, "2012-04-13", 330, "2010-11-02", 53, "2017-07-18", 88, "2016-05-24");
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (3, 145, "2012-04-13", 210, "2010-11-02", 47, "2017-07-18", 74, null);
-insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (4, 42, "2012-04-13", 420, "2010-11-02", 0, null, 71, "2016-05-24");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (3, 145, "2012-04-13", 210, "2010-11-02", 47, "2017-07-18", 74, "2013-01-01");
+insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (4, 42, "2012-04-13", 420, "2010-11-02", 10, "2001-05-13", 71, "2016-05-24");
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (5, 67, "2012-04-13", 234, "2010-11-02", 29, "2017-07-18", 72, "2016-05-24");
 insert into træningstider (id, bryst, brystdato, bfly, bfdato, crawl, crawldato, rcrawl, rcrawldato) values (6, 87, "2012-04-13", 278, "2010-11-02", 31, "2017-07-18", 68, "2016-05-24");
 

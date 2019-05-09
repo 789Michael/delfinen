@@ -151,6 +151,44 @@ public class DatabaseConnection implements StorageInterface {
             return null;
         }
     }
+    
+    @Override
+    public Medlem getTræningMedlemMedId(int id) {
+       try {
+           Connection connection = makeConnection();
+           Statement statement = connection.createStatement();
+           ResultSet result = statement.executeQuery("SELECT * FROM træningstider WHERE ID = " + id + ";");
+           
+           Medlem m = getMedlemMedId(id);
+           System.out.println("test");
+           result.next();
+           System.out.println("test2");
+           if(result == null){
+               System.out.println("LORT");
+           }
+           int i = result.getInt("ID");
+           System.out.println(i);
+           int x = result.getInt("BRYST"); 
+           System.out.println(x);
+           LocalDate localdate = result.getDate("BRYSTDATO").toLocalDate();
+           System.out.println(localdate);
+           int z = result.getInt("BFLY"); 
+           System.out.println(z);
+           int y = result.getInt("CRAWL");
+           System.out.println(y);
+           int a = result.getInt("RCRAWL");
+           System.out.println(a);
+           TræningMedlem tm = new TræningMedlem(i, m.getNavn(), m.getFødselsdag(), m.getTlfNo(), x, localdate, z,y,a);
+           //TræningMedlem tm = new TræningMedlem(result.getInt("ID"), m.getNavn(), m.getFødselsdag(), m.getTlfNo(), result.getInt("BRYST"),result.getDate("BRYSTDATO").toLocalDate(), result.getInt("BFLY"), result.getInt("CRAWL"), result.getInt("RCRAWL"));
+           return tm;
+       }
+       
+        catch (Exception e) {
+            System.out.println("Fejl i getMedlemMedtrænningsID: " + e.getMessage());
+            return null;
+            
+        }
+    }
 
     @Override
     public ArrayList<TræningMedlem> visTop5(String a, String dato) {
@@ -166,33 +204,33 @@ public class DatabaseConnection implements StorageInterface {
             String navn = result.getString("MNAME");
             Date date = result.getDate("ALDER");
             String tlfNo = result.getString("TLFNO");
-            Boolean aktivMedlem = result.getBoolean("AKTIV");
             int træningBryst = result.getInt("BRYST");
             Date brystDato = result.getDate("BRYSTDATO");
             int træningBfly = result.getInt("BFLY");
-            Date bfDato = result.getDate("BFDATO");
             int træningCrawl = result.getInt("CRAWL");
-            Date crawlDato = result.getDate("CRAWLDATO");
             int træningRcrawl = result.getInt("RCRAWL");
-            Date rcDato = result.getDate("RCRAWLDATO");
-            returnArray.add(new TræningMedlem(id, navn, date.toLocalDate(), tlfNo, aktivMedlem,  træningBryst, brystDato.toLocalDate(), træningBfly, bfDato.toLocalDate(), træningCrawl, crawlDato.toLocalDate(), træningRcrawl, rcDato.toLocalDate()));
+            returnArray.add(new TræningMedlem(id, navn, date.toLocalDate(), tlfNo, træningBryst, brystDato.toLocalDate(), træningBfly, træningCrawl,  træningRcrawl ));
         }
         
-           return returnArray;
+            
            
+           return returnArray;
         }
+        
         catch (Exception e) {
             System.out.println("Fejl i TræningMedlem: " + e.getMessage());
             return null;
         }
     }
             @Override
-            public void opdaterTræningsTider(TræningMedlem træningmedlem){
+            public void opdaterTræningsTider(TræningMedlem m){
             try {
             Connection connection = makeConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES (" + træningmedlem.getId()+ "," + træningmedlem.getTræningBryst()+ ",'" + træningmedlem.getBrystDato() + "'," + træningmedlem.getTræningBfly()+ ",'"+ træningmedlem.getBfDato()+ "',"+ træningmedlem.getTræningCrawl()+ ",'"+ træningmedlem.getCrawlDato()+"',"+træningmedlem.getTræningRcrawl()+ ",'"+ træningmedlem.getRcDato()+"'");
-                    }
+            //statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, CRAWL, RCRAWL) VALUES (" + træningmedlem.getId()+"," + træningmedlem.getTræningBryst()+ ",'" + træningmedlem.getBrystDato()+"'," træningmedlem.getTræningBfly()+ "," + træningmedlem.getTræningCrawl()+ træningmedlem.getTræningRcrawl()+",");
+            //statement.executeUpdate("INSERT INTO træningstider (ID, BRYST, BRYSTDATO, BFLY, BFDATO, CRAWL, CRAWLDATO, RCRAWL, RCRAWLDATO) VALUES (" + m.getId()+ "," + m.getTræningBryst()+ ",'" + m.getBrystDato() + "'," + m.getTræningBfly()+ ",'"+ m.getBfDato()+ "',"+ m.getTræningCrawl()+ ",'"+ m.getCrawlDato()+"',"+m.getTræningRcrawl()+ ",'"+ m.getRcDato()+"');");
+            statement.executeUpdate("UPDATE træningstider SET BRYST = "+ m.getTræningBryst() + ", BRYSTDATO = '" + m.getBrystDato() + "', BFLY = " + m.getTræningBfly() + ", CRAWL = " + m.getTræningCrawl() + ", RCRAWL = " + m.getTræningRcrawl() + " WHERE ID = " + m.getId() + ";" );
+            }
                     catch (Exception e){
                         System.out.println("Fejl i Opdater Træningstider: " + e.getMessage());
                     }
@@ -204,7 +242,7 @@ public class DatabaseConnection implements StorageInterface {
             try { 
                 Connection connection = makeConnection();
                 Statement statement = connection.createStatement();
-                //statement.executeUpdate("INSERT INTO resultater (SID, ID, BRYST, BPLADS, BFLY, BFPLADS, CRAWL, CPLADS, RCRAWL, RCPLADS) VALUES (" + konmedlem.getsID()+"," + konmedlem.getId()+","+konmedlem.getBryst() + "," + konmedlem.getbPlads()+"," + konmedlem.getBfly()+ "," + konmedlem.getBfPlads()+ ","+ konmedlem.getCrawl()+ konmedlem.getcPlads()+ "," + konmedlem.getRcrawl()+ "," + konmedlem.getRcPlads());
+                statement.executeUpdate("INSERT INTO resultater (SID, ID, BRYST, BPLADS, BFLY, BFPLADS, CRAWL, CPLADS, RCRAWL, RCPLADS) VALUES (" + konmedlem.getsID()+"," + konmedlem.getId()+","+konmedlem.getBryst() + "," + konmedlem.getbPlads()+"," + konmedlem.getBfly()+ "," + konmedlem.getBfPlads()+ ","+ konmedlem.getCrawl()+ konmedlem.getcPlads()+ "," + konmedlem.getRcrawl()+ "," + konmedlem.getRcPlads());
             }
             catch (Exception e) {
                 System.out.println("Fejl i opdater konkurrencetider: " + e.getMessage());

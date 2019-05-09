@@ -59,4 +59,17 @@ public interface UI {
     public void printStævneResultater(ArrayList<KonMedlem> kon);
     
     public String printStævne(ArrayList<String> s);
+
+    public int hvilketMedlemÆndre(ArrayList <Integer> ids);
+    
+    public int vælgBrystTid();
+    
+    public LocalDate vælgTræningDato();
+    
+    public int vælgBFtid();
+    
+    public int vælgCrawlTid();
+    
+    public int vælgRCTid ();
+    
 }
