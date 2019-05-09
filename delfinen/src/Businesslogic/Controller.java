@@ -200,7 +200,7 @@ public class Controller {
   
         } 
      private void visTop5(){
-         
+         ui.flushConsole();
          ui.visTop5Disciplin();
          boolean quit = false;
             do{
@@ -238,7 +238,6 @@ public class Controller {
         if(id != -1){
             TræningMedlem træningmedlem = new TræningMedlem((id), medlem.getNavn(), medlem.getFødselsdag(), medlem.getTlfNo(), ui.vælgBrystTid(), ui.vælgTræningDato(), ui.vælgBFtid(), ui.vælgCrawlTid(), ui.vælgRCTid());
             storage.opdaterTræningsTider(træningmedlem);
-            System.out.println("vi er så langt");
             ui.printString("Træningstider opdateret for medlem: " + storage.getTræningMedlemMedId(id).toString());
     }
     }

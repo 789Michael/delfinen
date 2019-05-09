@@ -50,7 +50,7 @@ public class SystemUI implements UI {
         flushConsole();
         System.out.println("Vælg en af følgende muligheder:");
         System.out.println("1. Opdater trænings tider");
-        System.out.println("2. Indsæt Konkurrence tider");
+        System.out.println("2. Indsæt Konkurrence tider(IKKE IMPLEMENTERET ENDNU :(");
         System.out.println("3. Vis Top 5 Svømmere");
         System.out.println("4. Vis Stævne Resultater");
         System.out.println("-1. Gå tilbage");
@@ -83,14 +83,13 @@ public class SystemUI implements UI {
         while(localDate == null){
           try{
             System.out.println("Indtast fødselsår med format [ÅÅÅÅ]:");
-            int årInput = scan.nextInt();
+            int årInput = Integer.parseInt(scan.nextLine());
             System.out.println("Indtast fødselsmåned med format [MM]:");
-            int mInput = scan.nextInt();
+            int mInput = Integer.parseInt(scan.nextLine());
             System.out.println("Indtast fødselsdato med format [DD]:");
-            int dInput = scan.nextInt();
+            int dInput = Integer.parseInt(scan.nextLine());
             localDate = LocalDate.of(årInput, mInput, dInput);
             if(localDate.getYear() > LocalDate.now().getYear()){
-                System.out.println("LORT");
                 localDate = null;
                 throw new IllegalArgumentException();
             }
@@ -99,7 +98,6 @@ public class SystemUI implements UI {
               System.out.println("Ikke gyldigt input! prøv igen");
         }
         }
-        scan.nextLine();
          return localDate;
     }
 
@@ -434,14 +432,13 @@ public class SystemUI implements UI {
         while(localDate == null){
           try{
             System.out.println("Indtast år for tidstagning med format [ÅÅÅÅ]:");
-            int årInput = scan.nextInt();
+            int årInput = Integer.parseInt(scan.nextLine());
             System.out.println("Indtast måned for tidstagning med format [MM]:");
-            int mInput = scan.nextInt();
+            int mInput = Integer.parseInt(scan.nextLine());
             System.out.println("Indtast dato for tidstagning med format [DD]:");
-            int dInput = scan.nextInt();
+            int dInput = Integer.parseInt(scan.nextLine());
             localDate = LocalDate.of(årInput, mInput, dInput);
             if(localDate.getYear() > LocalDate.now().getYear()){
-                System.out.println("LORT");
                 localDate = null;
                 throw new IllegalArgumentException();
             }
@@ -450,7 +447,6 @@ public class SystemUI implements UI {
               System.out.println("Ikke gyldigt input! prøv igen");
         }
         }
-        scan.nextLine();
          return localDate;}
 
     @Override

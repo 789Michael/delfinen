@@ -72,11 +72,6 @@ public class Medlem {
     public void setKontigentsDato(LocalDate kontigentsDato) {
         this.kontigentsDato = kontigentsDato;
     }
-
-//    @Override
-//    public String toString() {
-//        return "|ID: " + id + "| Navn: " + navn + "| Alder: " + calculateAge(alder, LocalDate.now()) + "| Tlf.: " + tlfNo + "| Aktivt medlem: " + aktivMedlem + "| Kontingent Dato: " + kontigentsDato + "|";
-//    }
     
     @Override
     public String toString() {
